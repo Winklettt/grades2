@@ -1,26 +1,25 @@
 # main.py
 """
-GitHub-Actions-ready script:
-- loggt sich in eine Seite ein (einfacher Login ohne CSRF)
-- lädt eine JSON-Seite mit Noten (grades_url)
+GitHub-Actions-ready script using Playwright for JS-login:
+- loggt sich in eine JS-seitige Seite ein
+- lädt JSON-Seite mit Noten (grades_url)
 - beim ersten Lauf: speichert sample als previous.json und beendet sich
-- später: findet neue grade-IDs, sendet E-Mail (ohne numerischen Wert),
-  und updated previous.json (commit & push zurück in das Repo)
-Konfiguration über Umgebungsvariablen (s.u.).
+- später: findet neue grade-IDs, sendet E-Mail (ohne numerischen Wert)
+- updated previous.json (commit & push)
 """
 
 import os
 import sys
 import json
-import requests
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
 import subprocess
+from playwright.sync_api import sync_playwright
 
-# ---- Konfiguration über ENV (setze als GitHub Secrets oder Action env) ----
-LOGIN_URL = os.environ.get("LOGIN_URL")  # z.B. "https://example.com/login"
-GRADES_URL = os.environ.get("GRADES_URL")  # URL, die das JSON mit "data" & "grades" zurückgibt
+# ---- Konfiguration über ENV ----
+LOGIN_URL = os.environ.get("LOGIN_URL")
+GRADES_URL = os.environ.get("GRADES_URL")
 LOGIN_FORM_FIELD_USER = os.environ.get("LOGIN_FORM_FIELD_USER", "username")
 LOGIN_FORM_FIELD_PASS = os.environ.get("LOGIN_FORM_FIELD_PASS", "password")
 LOGIN_USERNAME = os.environ.get("LOGIN_USERNAME")
@@ -34,10 +33,10 @@ SMTP_PASS = os.environ.get("SMTP_PASS")
 RECIPIENT = os.environ.get("RECIPIENT_EMAIL")
 SENDER = os.environ.get("SENDER_EMAIL") or SMTP_USER
 
-# Repo push (für commit back)
+# Repo push
 GIT_COMMIT_NAME = os.environ.get("GIT_COMMIT_NAME", "grades-bot")
 GIT_COMMIT_EMAIL = os.environ.get("GIT_COMMIT_EMAIL", "action@users.noreply.github.com")
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")  # GitHub Actions provides this automatically
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 # Pfade
 PREV_FILE = "previous.json"
@@ -48,38 +47,45 @@ def fatal(msg):
     print("ERROR:", msg)
     sys.exit(1)
 
-def login_and_fetch(session):
+def login_and_fetch():
     """
-    Login ohne CSRF:
-      - zuerst GET auf LOGIN_URL, um Session-Cookies zu erhalten
-      - dann POST mit username/password
+    Login mit Playwright (JS-fähig) und return JSON-Daten der Noten.
     """
     if not LOGIN_URL or not GRADES_URL or not LOGIN_USERNAME or not LOGIN_PASSWORD:
         fatal("Bitte setze LOGIN_URL, GRADES_URL, LOGIN_USERNAME, LOGIN_PASSWORD als Umgebungsvariablen.")
-    
-    headers = {"User-Agent": "grades-bot/1.0"}
 
-    print("-> GET Login-Seite für Session-Cookies:", LOGIN_URL)
-    r_get = session.get(LOGIN_URL, headers=headers, timeout=30)
-    if r_get.status_code != 200:
-        fatal(f"Fehler beim Laden der Login-Seite (HTTP {r_get.status_code})")
-
-    print("-> POST Login-Daten")
-    form = {LOGIN_FORM_FIELD_USER: LOGIN_USERNAME, LOGIN_FORM_FIELD_PASS: LOGIN_PASSWORD}
-    r_post = session.post(LOGIN_URL, data=form, headers=headers, timeout=30)
-    print("Login response:", r_post.status_code)
-    if r_post.status_code not in (200, 302):
-        fatal(f"Login scheint fehlgeschlagen (HTTP {r_post.status_code}). Antwort: {r_post.text[:400]}")
-
-    print("-> Laden der Noten/geschützten Seite:", GRADES_URL)
-    r2 = session.get(GRADES_URL, headers=headers, timeout=30)
-    if r2.status_code != 200:
-        fatal(f"Fehler beim Laden der Noten (HTTP {r2.status_code})")
-    try:
-        data = r2.json()
-    except ValueError:
-        fatal("Die geschützte Seite lieferte kein JSON. Wenn sie JS-rendered ist, musst du Selenium/Playwright verwenden.")
-    return data
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
+        
+        print("-> Navigating to login page")
+        page.goto(LOGIN_URL, timeout=60000)
+        
+        # fill username/password fields
+        page.fill(f'input[name="{LOGIN_FORM_FIELD_USER}"]', LOGIN_USERNAME)
+        page.fill(f'input[name="{LOGIN_FORM_FIELD_PASS}"]', LOGIN_PASSWORD)
+        # click login button (assume it's a button or input[type=submit])
+        page.click('button[type="submit"], input[type="submit"]')
+        
+        # wait until navigation or page has loaded JSON link
+        page.wait_for_load_state("networkidle", timeout=30000)
+        
+        print("-> Logged in, fetching grades JSON")
+        page.goto(GRADES_URL)
+        page.wait_for_load_state("networkidle", timeout=30000)
+        
+        # extract JSON content
+        content = page.content()
+        # assume the page returns raw JSON
+        try:
+            json_text = page.inner_text("body")
+            data = json.loads(json_text)
+        except Exception as e:
+            fatal("Fehler beim Parsen der JSON-Seite nach Login. Eventuell JS-rendered, oder falsche URL.")
+        
+        browser.close()
+        return data
 
 def send_email(subject, body, to_addr):
     msg = EmailMessage()
@@ -112,15 +118,14 @@ def git_commit_and_push(files, message):
 
 # ---- Main Ablauf ----
 def main():
-    session = requests.Session()
-    data = login_and_fetch(session)
+    data = login_and_fetch()
 
     with open(CURRENT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     try:
         grades = data["data"]["grades"]
-    except Exception as e:
+    except Exception:
         fatal("JSON-Struktur unerwartet. Erwartet: data.data.grades")
 
     if not os.path.exists(PREV_FILE):

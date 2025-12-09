@@ -1,7 +1,7 @@
 # main.py
 """
 GitHub-Actions-ready script:
-- loggt sich in eine Seite ein (anpassbare login request)
+- loggt sich in eine Seite ein (einfacher Login ohne CSRF)
 - lädt eine JSON-Seite mit Noten (grades_url)
 - beim ersten Lauf: speichert sample als previous.json und beendet sich
 - später: findet neue grade-IDs, sendet E-Mail (ohne numerischen Wert),
@@ -21,7 +21,6 @@ import subprocess
 # ---- Konfiguration über ENV (setze als GitHub Secrets oder Action env) ----
 LOGIN_URL = os.environ.get("LOGIN_URL")  # z.B. "https://example.com/login"
 GRADES_URL = os.environ.get("GRADES_URL")  # URL, die das JSON mit "data" & "grades" zurückgibt
-LOGIN_PAYLOAD_JSON = os.environ.get("LOGIN_PAYLOAD_JSON")  # falls du JSON-Payload willst
 LOGIN_FORM_FIELD_USER = os.environ.get("LOGIN_FORM_FIELD_USER", "username")
 LOGIN_FORM_FIELD_PASS = os.environ.get("LOGIN_FORM_FIELD_PASS", "password")
 LOGIN_USERNAME = os.environ.get("LOGIN_USERNAME")
@@ -51,39 +50,26 @@ def fatal(msg):
 
 def login_and_fetch(session):
     """
-    Versuche Login. Die Login-Payload muss an die Zielseite angepasst werden!
-    Zwei Optionen:
-      - LOGIN_PAYLOAD_JSON gesetzt => sendet JSON body
-      - sonst sendet Form-encoded mit LOGIN_FORM_FIELD_USER/LOGIN_FORM_FIELD_PASS
+    Login ohne CSRF:
+      - zuerst GET auf LOGIN_URL, um Session-Cookies zu erhalten
+      - dann POST mit username/password
     """
     if not LOGIN_URL or not GRADES_URL or not LOGIN_USERNAME or not LOGIN_PASSWORD:
         fatal("Bitte setze LOGIN_URL, GRADES_URL, LOGIN_USERNAME, LOGIN_PASSWORD als Umgebungsvariablen.")
-    print("-> Login to", LOGIN_URL)
+    
     headers = {"User-Agent": "grades-bot/1.0"}
 
-    if LOGIN_PAYLOAD_JSON:
-        # Wenn du JSON-Payload brauchst (z.B. API login)
-        try:
-            payload = json.loads(LOGIN_PAYLOAD_JSON)
-        except json.JSONDecodeError:
-            fatal("LOGIN_PAYLOAD_JSON ist kein valides JSON.")
-        # setze username/password falls Platzhalter in JSON existieren (optional)
-        # payload sollte die richtigen Felder enthalten
-        # Beispiel: {"email":"__USER__","password":"__PASS__"}
-        for k,v in payload.items():
-            if isinstance(v, str) and v == "__USER__":
-                payload[k] = LOGIN_USERNAME
-            if isinstance(v, str) and v == "__PASS__":
-                payload[k] = LOGIN_PASSWORD
-        r = session.post(LOGIN_URL, json=payload, headers=headers, timeout=30)
-    else:
-        # Form-encoded default
-        form = {LOGIN_FORM_FIELD_USER: LOGIN_USERNAME, LOGIN_FORM_FIELD_PASS: LOGIN_PASSWORD}
-        r = session.post(LOGIN_URL, data=form, headers=headers, timeout=30)
-    print("Login response:", r.status_code)
-    # heuristisch prüfen — evtl anpassen
-    if r.status_code not in (200, 302):
-        fatal(f"Login scheint fehlgeschlagen (HTTP {r.status_code}). Antwort: {r.text[:400]}")
+    print("-> GET Login-Seite für Session-Cookies:", LOGIN_URL)
+    r_get = session.get(LOGIN_URL, headers=headers, timeout=30)
+    if r_get.status_code != 200:
+        fatal(f"Fehler beim Laden der Login-Seite (HTTP {r_get.status_code})")
+
+    print("-> POST Login-Daten")
+    form = {LOGIN_FORM_FIELD_USER: LOGIN_USERNAME, LOGIN_FORM_FIELD_PASS: LOGIN_PASSWORD}
+    r_post = session.post(LOGIN_URL, data=form, headers=headers, timeout=30)
+    print("Login response:", r_post.status_code)
+    if r_post.status_code not in (200, 302):
+        fatal(f"Login scheint fehlgeschlagen (HTTP {r_post.status_code}). Antwort: {r_post.text[:400]}")
 
     print("-> Laden der Noten/geschützten Seite:", GRADES_URL)
     r2 = session.get(GRADES_URL, headers=headers, timeout=30)
@@ -109,20 +95,16 @@ def send_email(subject, body, to_addr):
     print("Mail sent.")
 
 def git_commit_and_push(files, message):
-    # config
     subprocess.check_call(["git", "config", "user.name", GIT_COMMIT_NAME])
     subprocess.check_call(["git", "config", "user.email", GIT_COMMIT_EMAIL])
     subprocess.check_call(["git", "add"] + files)
     subprocess.check_call(["git", "commit", "-m", message])
-    # push: use token if provided, replace remote origin url to include token
     if GITHUB_TOKEN:
-        # get current origin url
         origin_url = subprocess.check_output(["git", "remote", "get-url", "origin"]).decode().strip()
         if origin_url.startswith("https://"):
             auth_url = origin_url.replace("https://", f"https://x-access-token:{GITHUB_TOKEN}@")
             subprocess.check_call(["git", "remote", "set-url", "origin", auth_url])
             subprocess.check_call(["git", "push"])
-            # restore origin not strictly necessary in Actions ephemeral runner
         else:
             subprocess.check_call(["git", "push"])
     else:
@@ -133,17 +115,14 @@ def main():
     session = requests.Session()
     data = login_and_fetch(session)
 
-    # speichere current
     with open(CURRENT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    # Struktur annehmen: data["data"]["grades"] (wie in deinem Sample)
     try:
         grades = data["data"]["grades"]
     except Exception as e:
         fatal("JSON-Struktur unerwartet. Erwartet: data.data.grades")
 
-    # Wenn previous.json fehlt -> erstlauf -> speichern und beenden
     if not os.path.exists(PREV_FILE):
         print("Kein previous.json gefunden — Erstlauf: Speichern als sample und beenden.")
         subprocess.check_call(["git", "add", CURRENT_FILE])
@@ -162,23 +141,19 @@ def main():
     new_ids = sorted(list(curr_ids - prev_ids))
     if not new_ids:
         print("Keine neuen Noten gefunden.")
-        # optional: cleanup current.json
         if os.path.exists(CURRENT_FILE):
             os.remove(CURRENT_FILE)
         return
 
     print(f"Gefundene neue grade IDs: {new_ids}")
 
-    # Für jede neue Note: extrahiere subject name & collection name (ohne numeric value)
     notifications = []
     for g in grades:
         if g["id"] in new_ids:
             subject = g.get("collection", {}).get("subject", {}).get("name") or g.get("collection", {}).get("subject", {}).get("local_id") or "Unbekanntes Fach"
             collection_name = g.get("collection", {}).get("name") or "Unbenannte Sammlung"
-            # Formuliere Nachricht: NICHT die Zahl value einfügen!
             notifications.append({"id": g["id"], "subject": subject, "collection": collection_name, "given_at": g.get("given_at")})
 
-    # Erzeuge E-Mail (ein Mail für alle neuen Items, oder eine pro Item — hier ein Mail mit allen)
     subj = f"[Noten-Update] {len(notifications)} neue(n) Eintrag(e)"
     body_lines = []
     for n in notifications:
@@ -187,8 +162,6 @@ def main():
 
     send_email(subj, body, RECIPIENT)
 
-    # Replace previous.json with current.json and commit & push
-    # overwrite previous.json
     with open(PREV_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 

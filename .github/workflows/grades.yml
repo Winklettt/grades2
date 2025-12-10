@@ -1,32 +1,55 @@
-name: Grades Checker
+name: Grades Bot
 
 on:
   schedule:
-    - cron: "*/12 * * * *"
+    - cron: '*/12 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  check:
+  fetch-grades:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install deps
-      run: |
-        pip install playwright
-        playwright install chromium
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          pip install -r requirements.txt || echo "No requirements.txt"
+          playwright install chromium
 
-    - name: Run script
-      env:
-        BOT_SECRETS_B64: ${{ secrets.BOT_SECRETS_B64 }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        python3 main.py
+      # Convert the raw JSON secret BOT_SECRETS -> base64 and export as BOT_SECRETS_B64
+      - name: Convert BOT_SECRETS to Base64 and export
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.BOT_SECRETS }}" ]; then
+            echo "ERROR: secrets.BOT_SECRETS is empty. Please add your JSON secret named BOT_SECRETS."
+            exit 1
+          fi
+          # printf preserves the JSON exactly (no extra newline), base64 -w0 makes one-line output
+          BOT_SECRETS_B64=$(printf '%s' "${{ secrets.BOT_SECRETS }}" | base64 -w0)
+          echo "BOT_SECRETS_B64=$BOT_SECRETS_B64" >> $GITHUB_ENV
+          echo "Exported BOT_SECRETS_B64 (length: ${#BOT_SECRETS_B64})"
+
+      # export GITHUB_TOKEN for the script (so git push can use it)
+      - name: Export GITHUB_TOKEN
+        run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Run grades bot
+        env:
+          # main.py reads BOT_SECRETS_B64 from the environment
+          BOT_SECRETS_B64: ${{ env.BOT_SECRETS_B64 }}
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        run: python main.py

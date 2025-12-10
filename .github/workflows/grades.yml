@@ -2,7 +2,7 @@ name: Grades Bot
 
 on:
   schedule:
-    - cron: "*/12 * * * *"
+    - cron: "*/12 * * * *"  # alle 12 Minuten
   workflow_dispatch:
 
 permissions:
@@ -30,23 +30,23 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      # Debug: show decoded JSON first 100 chars
-      - name: Debug decode
+      # Debug: show BOT_SECRETS_B64 length and preview
+      - name: Debug BOT_SECRETS_B64
         shell: bash
         env:
           BOT_SECRETS_B64: ${{ secrets.BOT_SECRETS_B64 }}
         run: |
+          if [ -z "$BOT_SECRETS_B64" ]; then
+            echo "ERROR: BOT_SECRETS_B64 is empty"
+            exit 1
+          fi
+          echo "BOT_SECRETS_B64 length: ${#BOT_SECRETS_B64}"
           decoded="$(echo "$BOT_SECRETS_B64" | base64 -d)"
-          echo "---- DEBUG START ----"
-          echo "Length: ${#decoded}"
-          echo "Preview:"
+          echo "Decoded preview (first 200 chars):"
           echo "${decoded:0:200}"
-          echo
-          echo "---- DEBUG END ----"
 
-      - name: Export environment variables
-        run: |
-          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+      - name: Export GITHUB_TOKEN
+        run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run grades bot
         env:

@@ -12,6 +12,7 @@ import os
 import sys
 import json
 import smtplib
+import base64
 from email.message import EmailMessage
 from datetime import datetime
 import subprocess
@@ -19,14 +20,16 @@ from playwright.sync_api import sync_playwright
 
 # ---- Repository Secrets Wrapper ----
 def load_secrets():
-    raw = os.environ.get("BOT_SECRETS")
-    if not raw:
-        print("ERROR: BOT_SECRETS not provided. Add it as a GitHub repository secret.")
+    raw_b64 = os.environ.get("BOT_SECRETS_B64")
+    if not raw_b64:
+        print("ERROR: BOT_SECRETS_B64 not provided. Add BOT_SECRETS as a GitHub secret.")
         sys.exit(1)
+
     try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        print("ERROR: BOT_SECRETS is not valid JSON")
+        decoded = base64.b64decode(raw_b64).decode("utf-8")
+        return json.loads(decoded)
+    except Exception as e:
+        print("ERROR: Failed to decode BOT_SECRETS_B64:", e)
         sys.exit(1)
 
 SECRETS = load_secrets()

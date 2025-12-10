@@ -30,21 +30,21 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      # Convert raw JSON secret BOT_SECRETS -> Base64 safely using PowerShell
       - name: Convert BOT_SECRETS to Base64 and export
         shell: pwsh
         run: |
-          if (-not $env:BOT_SECRETS) {
-            Write-Error "ERROR: secrets.BOT_SECRETS is empty. Add your JSON secret named BOT_SECRETS."
+          if (-not "${{ secrets.BOT_SECRETS }}") {
+            Write-Error "ERROR: BOT_SECRETS is empty."
             exit 1
           }
-          $raw = '${{ secrets.BOT_SECRETS }}'
+
+          # MUST use double quotes to allow interpolation
+          $raw = "${{ secrets.BOT_SECRETS }}"
           $bytes = [System.Text.Encoding]::UTF8.GetBytes($raw)
           $b64 = [System.Convert]::ToBase64String($bytes)
           echo "BOT_SECRETS_B64=$b64" >> $env:GITHUB_ENV
           Write-Output "Exported BOT_SECRETS_B64 (length: $($b64.Length))"
 
-      # Export GITHUB_TOKEN so main.py can push commits
       - name: Export GITHUB_TOKEN
         run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 

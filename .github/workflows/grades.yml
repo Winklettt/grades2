@@ -2,7 +2,7 @@ name: Grades Bot
 
 on:
   schedule:
-    - cron: '*/12 * * * *'   # runs every 12 minutes
+    - cron: '*/12 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -27,12 +27,10 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      # 👇 This is the missing part!
-      - name: Load BOT_SECRETS into environment
-        run: |
-          echo "BOT_SECRETS=${{ secrets.BOT_SECRETS }}" >> $GITHUB_ENV
+      # 🔥 FIX: store base64-encoded JSON
+      - name: Load BOT_SECRETS (base64)
+        run: echo "BOT_SECRETS_B64=$(printf '%s' '${{ secrets.BOT_SECRETS }}' | base64 -w0)" >> $GITHUB_ENV
 
-      # Needed for git push
       - name: Export GITHUB_TOKEN
         run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 

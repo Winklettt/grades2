@@ -30,36 +30,26 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      # Convert raw JSON to Base64
-      - name: Convert BOT_SECRETS to Base64
+      # Debug: show decoded JSON first 100 chars
+      - name: Debug decode
         shell: bash
+        env:
+          BOT_SECRETS_B64: ${{ secrets.BOT_SECRETS_B64 }}
         run: |
-          if [ -z "${{ secrets.BOT_SECRETS }}" ]; then
-            echo "ERROR: secrets.BOT_SECRETS is EMPTY"
-            exit 1
-          fi
-          
-          # Convert EXACT JSON to Base64 without modifications
-          BOT_SECRETS_B64=$(printf '%s' "${{ secrets.BOT_SECRETS }}" | base64 -w0)
-          echo "BOT_SECRETS_B64=$BOT_SECRETS_B64" >> $GITHUB_ENV
-          echo "Base64 conversion complete. Length: ${#BOT_SECRETS_B64}"
+          decoded="$(echo "$BOT_SECRETS_B64" | base64 -d)"
+          echo "---- DEBUG START ----"
+          echo "Length: ${#decoded}"
+          echo "Preview:"
+          echo "${decoded:0:200}"
+          echo
+          echo "---- DEBUG END ----"
 
-      # Debug: Print decoded JSON first 100 chars (SAFE)
-      - name: Debug - show decoded JSON structure
-        shell: pwsh
+      - name: Export environment variables
         run: |
-          $decoded = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:BOT_SECRETS_B64))
-          Write-Host "---- DEBUG START ----"
-          Write-Host "Decoded length: $($decoded.Length)"
-          Write-Host "First 100 chars:"
-          Write-Host ($decoded.Substring(0, [Math]::Min(100, $decoded.Length)))
-          Write-Host "---- DEBUG END ----"
-
-      - name: Export GITHUB_TOKEN
-        run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run grades bot
         env:
-          BOT_SECRETS_B64: ${{ env.BOT_SECRETS_B64 }}
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          BOT_SECRETS_B64: ${{ secrets.BOT_SECRETS_B64 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python main.py

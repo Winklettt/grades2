@@ -30,18 +30,24 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      - name: Convert BOT_SECRETS to Base64 and export
+      # Step 1 — Export the JSON secret safely as an ENV variable
+      - name: Export BOT_SECRETS
+        run: echo "BOT_SECRETS=${{ secrets.BOT_SECRETS }}" >> $GITHUB_ENV
+
+      # Step 2 — Convert the JSON to Base64 *inside PowerShell* safely using the ENV var
+        # (No interpolation of dangerous quotes)
+      - name: Convert BOT_SECRETS to Base64
         shell: pwsh
         run: |
-          if (-not "${{ secrets.BOT_SECRETS }}") {
+          if (-not $env:BOT_SECRETS) {
             Write-Error "ERROR: BOT_SECRETS is empty."
             exit 1
           }
 
-          # MUST use double quotes to allow interpolation
-          $raw = "${{ secrets.BOT_SECRETS }}"
+          $raw = $env:BOT_SECRETS
           $bytes = [System.Text.Encoding]::UTF8.GetBytes($raw)
-          $b64 = [System.Convert]::ToBase64String($bytes)
+          $b64 = [Convert]::ToBase64String($bytes)
+
           echo "BOT_SECRETS_B64=$b64" >> $env:GITHUB_ENV
           Write-Output "Exported BOT_SECRETS_B64 (length: $($b64.Length))"
 

@@ -2,8 +2,8 @@ name: Grades Bot
 
 on:
   schedule:
-    - cron: '*/12 * * * *' # runs every 12 minutes
-  workflow_dispatch: # allows manual run
+    - cron: '*/12 * * * *'   # runs every 12 minutes
+  workflow_dispatch:
 
 jobs:
   fetch-grades:
@@ -13,6 +13,8 @@ jobs:
       # 1. Checkout repo
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # 2. Set up Python
       - name: Set up Python
@@ -28,21 +30,23 @@ jobs:
           pip install -r requirements.txt || echo "No requirements.txt"
           playwright install chromium
 
-      # 4. Set environment variables (use GitHub Secrets)
-      - name: Set environment variables
-        env:
-          LOGIN_URL: ${{ secrets.LOGIN_URL }}
-          GRADES_URL: ${{ secrets.GRADES_URL }}
-          LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
-          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "Env variables set"
+      # 4. Export secrets as environment variables
+      - name: Export secrets to ENV
+        run: |
+          echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" >> $GITHUB_ENV
+          echo "GRADES_URL=${{ secrets.GRADES_URL }}" >> $GITHUB_ENV
+          echo "LOGIN_USERNAME=${{ secrets.LOGIN_USERNAME }}" >> $GITHUB_ENV
+          echo "LOGIN_PASSWORD=${{ secrets.LOGIN_PASSWORD }}" >> $GITHUB_ENV
+          echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> $GITHUB_ENV
+          echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> $GITHUB_ENV
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> $GITHUB_ENV
+          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> $GITHUB_ENV
+          echo "RECIPIENT_EMAIL=${{ secrets.RECIPIENT_EMAIL }}" >> $GITHUB_ENV
+          echo "SENDER_EMAIL=${{ secrets.SENDER_EMAIL }}" >> $GITHUB_ENV
+          echo "GIT_COMMIT_NAME=${{ secrets.GIT_COMMIT_NAME }}" >> $GITHUB_ENV
+          echo "GIT_COMMIT_EMAIL=${{ secrets.GIT_COMMIT_EMAIL }}" >> $GITHUB_ENV
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 
-      # 5. Run the Python script
+      # 5. Run the bot
       - name: Run grades bot
         run: python main.py

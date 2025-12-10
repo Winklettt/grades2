@@ -184,16 +184,38 @@ def git_commit_and_push(files, message):
     subprocess.check_call(["git", "config", "user.name", GIT_COMMIT_NAME])
     subprocess.check_call(["git", "config", "user.email", GIT_COMMIT_EMAIL])
     subprocess.check_call(["git", "add"] + files)
-    subprocess.check_call(["git", "commit", "-m", message])
 
-    if GITHUB_TOKEN:
-        origin_url = subprocess.check_output(["git", "remote", "get-url", "origin"]).decode().strip()
+    # Do not crash if commit has nothing to commit
+    try:
+        subprocess.check_call(["git", "commit", "-m", message])
+    except subprocess.CalledProcessError:
+        print("-> Nothing to commit")
+        return
+
+    if not GITHUB_TOKEN:
+        print("WARNING: No GITHUB_TOKEN provided. Skipping push.")
+        return
+
+    try:
+        origin_url = subprocess.check_output(
+            ["git", "remote", "get-url", "origin"]
+        ).decode().strip()
+
         if origin_url.startswith("https://"):
-            auth_url = origin_url.replace("https://", f"https://x-access-token:{GITHUB_TOKEN}@")
+            auth_url = origin_url.replace(
+                "https://",
+                f"https://x-access-token:{GITHUB_TOKEN}@"
+            )
             subprocess.check_call(["git", "remote", "set-url", "origin", auth_url])
+
         subprocess.check_call(["git", "push"])
-    else:
-        print("WARNING: No GITHUB_TOKEN set — skipping push")
+        print("-> Push successful")
+
+    except subprocess.CalledProcessError as e:
+        print("ERROR: Push failed. Probably missing repo permissions.")
+        print("Exception:", e)
+        print("-> Continuing without stopping the workflow.")
+
 
 # ---- Main ----
 def main():

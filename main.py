@@ -66,7 +66,7 @@ def fatal(msg):
 
 def login_and_fetch():
     """
-    Login via Playwright and return JSON page content.
+    Login via Playwright with automatic JS-render wait + flexible field detection.
     """
 
     if not LOGIN_URL or not GRADES_URL or not LOGIN_USERNAME or not LOGIN_PASSWORD:
@@ -80,21 +80,88 @@ def login_and_fetch():
         print("-> Opening login page")
         page.goto(LOGIN_URL, timeout=60000)
 
-        page.fill(f'input[name="{LOGIN_FORM_FIELD_USER}"]', LOGIN_USERNAME)
-        page.fill(f'input[name="{LOGIN_FORM_FIELD_PASS}"]', LOGIN_PASSWORD)
+        # Wait for JS app to render
+        page.wait_for_load_state("networkidle", timeout=60000)
 
-        page.click('button[type="submit"], input[type="submit"]')
-        page.wait_for_load_state("networkidle", timeout=30000)
+        print("-> Login page loaded. Scanning inputs...")
 
-        print("-> Login successful, loading grades JSON")
-        page.goto(GRADES_URL)
-        page.wait_for_load_state("networkidle", timeout=30000)
+        # List all input fields for debugging
+        inputs = page.locator("input").all()
+        print("-> Found input fields:")
+        for i, inp in enumerate(inputs):
+            try:
+                name = inp.get_attribute("name")
+                itype = inp.get_attribute("type")
+                print(f"   {i}: name={name}, type={itype}")
+            except:
+                pass
+
+        # Try multiple possible username field names
+        possible_user_fields = [
+            LOGIN_FORM_FIELD_USER,
+            "username",
+            "email",
+            "user",
+            "login",
+            "identifier",
+        ]
+
+        # Try multiple possible password fields
+        possible_pass_fields = [
+            LOGIN_FORM_FIELD_PASS,
+            "password",
+            "pass",
+            "passwd",
+        ]
+
+        username_selector = None
+        password_selector = None
+
+        # Detect username field
+        for field in possible_user_fields:
+            sel = f'input[name="{field}"]'
+            if page.locator(sel).count() > 0:
+                username_selector = sel
+                break
+
+        # Detect password field
+        for field in possible_pass_fields:
+            sel = f'input[name="{field}"]'
+            if page.locator(sel).count() > 0:
+                password_selector = sel
+                break
+
+        if not username_selector:
+            fatal("Could not find username field! Check printed input names above.")
+
+        if not password_selector:
+            fatal("Could not find password field! Check printed input names above.")
+
+        print(f"-> Using username selector: {username_selector}")
+        print(f"-> Using password selector: {password_selector}")
+
+        # Fill credentials
+        page.fill(username_selector, LOGIN_USERNAME)
+        page.fill(password_selector, LOGIN_PASSWORD)
+
+        # Try clicking submit
+        print("-> Clicking login button")
+        page.click("button[type=submit], input[type=submit], button", timeout=60000)
+
+        # Wait until login finishes
+        page.wait_for_load_state("networkidle", timeout=60000)
+
+        print("-> Login successful (probably), loading grades JSON...")
+        page.goto(GRADES_URL, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         try:
             json_text = page.inner_text("body")
             data = json.loads(json_text)
-        except Exception:
-            fatal("Fehler: Grades URL liefert kein JSON. Falsche URL? Seite JS-gerendert?")
+        except Exception as e:
+            print("-> Grades JSON parse failed.")
+            print("Body content was:\n", json_text[:1000])
+            fatal("Grades URL is not returning JSON. Wrong URL? Requires API token?")
 
         browser.close()
         return data

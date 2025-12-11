@@ -1,11 +1,10 @@
 # main.py
 """
-GitHub-Actions-ready script using Playwright for JS-login:
-- Performs login on a JS-rendered website
-- Loads JSON with grades (GRADES_URL)
-- First run: saves sample as previous.json
-- Later: detects new grade IDs, sends email (no numeric value)
-- Updates previous.json and commits/pushes
+Extended debug version:
+- prints EXACT username & password entered
+- prints what is filled in each field
+- takes screenshots before and after login attempt
+- tries multiple login approaches
 """
 
 import os
@@ -23,7 +22,7 @@ from playwright.sync_api import sync_playwright
 def load_secrets():
     raw_b64 = os.environ.get("BOT_SECRETS_B64")
     if not raw_b64:
-        print("ERROR: BOT_SECRETS_B64 not provided. Add BOT_SECRETS as a GitHub secret.")
+        print("ERROR: BOT_SECRETS_B64 not provided.")
         sys.exit(1)
 
     try:
@@ -36,15 +35,13 @@ def load_secrets():
 
 SECRETS = load_secrets()
 
-# ---- Config from Secrets ----
 LOGIN_URL = SECRETS.get("LOGIN_URL")
 GRADES_URL = SECRETS.get("GRADES_URL")
-LOGIN_FORM_FIELD_USER = SECRETS.get("LOGIN_FORM_FIELD_USER", "identifier")
-LOGIN_FORM_FIELD_PASS = SECRETS.get("LOGIN_FORM_FIELD_PASS", "password")
 LOGIN_USERNAME = SECRETS.get("LOGIN_USERNAME")
 LOGIN_PASSWORD = SECRETS.get("LOGIN_PASSWORD")
+LOGIN_FORM_FIELD_USER = SECRETS.get("LOGIN_FORM_FIELD_USER", "username")
+LOGIN_FORM_FIELD_PASS = SECRETS.get("LOGIN_FORM_FIELD_PASS", "password")
 
-# SMTP / Mail
 SMTP_HOST = SECRETS.get("SMTP_HOST")
 SMTP_PORT = int(SECRETS.get("SMTP_PORT", "587"))
 SMTP_USER = SECRETS.get("SMTP_USER")
@@ -52,34 +49,20 @@ SMTP_PASS = SECRETS.get("SMTP_PASS")
 RECIPIENT = SECRETS.get("RECIPIENT_EMAIL")
 SENDER = SECRETS.get("SENDER_EMAIL") or SMTP_USER
 
-# Git settings
 GIT_COMMIT_NAME = SECRETS.get("GIT_COMMIT_NAME", "grades-bot")
 GIT_COMMIT_EMAIL = SECRETS.get("GIT_COMMIT_EMAIL", "action@users.noreply.github.com")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
-# Paths
 PREV_FILE = "previous.json"
 CURRENT_FILE = "current.json"
 
 
-# ---- Helpers ----
 def fatal(msg):
     print("ERROR:", msg)
     sys.exit(1)
 
 
 def login_and_fetch():
-    """
-    Login via Playwright using ENTER KEY SUBMIT (works on your target site).
-    Includes:
-    - Field auto-detection
-    - Full debug output
-    - Login verification (detects login failure)
-    """
-
-    if not LOGIN_URL or not GRADES_URL or not LOGIN_USERNAME or not LOGIN_PASSWORD:
-        fatal("Missing required secrets: LOGIN_URL, GRADES_URL, LOGIN_USERNAME, LOGIN_PASSWORD")
-
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
@@ -87,31 +70,27 @@ def login_and_fetch():
 
         print("-> Opening login page")
         page.goto(LOGIN_URL, timeout=60000)
-        page.wait_for_load_state("networkidle", timeout=60000)
+        page.wait_for_load_state("networkidle")
+
+        page.screenshot(path="debug_before_login.png")
+        print("-> Screenshot saved: debug_before_login.png")
 
         print("-> Login page loaded. Scanning inputs...")
-
-        # Debug all inputs
         inputs = page.locator("input").all()
-        print("-> Found input fields:")
         for i, inp in enumerate(inputs):
-            try:
-                name = inp.get_attribute("name")
-                itype = inp.get_attribute("type")
-                print(f"   {i}: name={name}, type={itype}")
-            except:
-                pass
+            name = inp.get_attribute("name")
+            itype = inp.get_attribute("type")
+            print(f"   {i}: name={name}, type={itype}")
 
-        # Potential input names
-        user_candidates = [
+        possible_user_fields = [
             LOGIN_FORM_FIELD_USER,
             "identifier",
             "username",
             "email",
             "user",
-            "login",
         ]
-        pass_candidates = [
+
+        possible_pass_fields = [
             LOGIN_FORM_FIELD_PASS,
             "password",
             "pass",
@@ -121,66 +100,76 @@ def login_and_fetch():
         username_selector = None
         password_selector = None
 
-        # Detect username field
-        for field in user_candidates:
+        for field in possible_user_fields:
             sel = f'input[name="{field}"]'
             if page.locator(sel).count() > 0:
                 username_selector = sel
                 break
 
-        # Detect password field
-        for field in pass_candidates:
+        for field in possible_pass_fields:
             sel = f'input[name="{field}"]'
             if page.locator(sel).count() > 0:
                 password_selector = sel
                 break
 
         if not username_selector:
-            fatal("Could not locate username field!")
-
+            fatal("Could not find username field.")
         if not password_selector:
-            fatal("Could not locate password field!")
+            fatal("Could not find password field.")
 
         print(f"-> Using username selector: {username_selector}")
         print(f"-> Using password selector: {password_selector}")
 
-        # Fill fields
+        print(f"-> ENTERING USERNAME: {LOGIN_USERNAME}")
         page.fill(username_selector, LOGIN_USERNAME)
-        page.fill(password_selector, LOGIN_PASSWORD)
+        print("-> Username field now contains:", page.locator(username_selector).input_value())
 
-        # ---- CRITICAL FIX: submit via ENTER key ----
-        print("-> Submitting via ENTER key")
+        print(f"-> ENTERING PASSWORD: {LOGIN_PASSWORD}")
+        page.fill(password_selector, LOGIN_PASSWORD)
+        print("-> Password field now contains:", page.locator(password_selector).input_value())
+
+        print("-> Trying ENTER key login")
         page.press(password_selector, "Enter")
 
-        # Wait for navigation
-        page.wait_for_load_state("networkidle", timeout=60000)
+        page.wait_for_timeout(2000)
 
-        # ---- Login success check ----
-        if "login" in page.url.lower():
-            print("-> Login failed or stuck. Page still shows login form.")
+        still_login = (page.locator(username_selector).count() > 0)
+
+        if still_login:
+            print("-> ENTER did not submit. Trying button clicks...")
+
+            buttons = page.locator("button, input[type=submit]").all()
+            print(f"-> Found {len(buttons)} clickable elements")
+
+            for i, b in enumerate(buttons):
+                try:
+                    txt = b.inner_text()
+                except:
+                    txt = "(no text)"
+
+                print(f"   Trying click #{i}: '{txt}'")
+                try:
+                    b.click(timeout=3000)
+                    page.wait_for_timeout(2000)
+                    if page.locator(username_selector).count() == 0:
+                        print("-> Login successful after clicking button!")
+                        break
+                except:
+                    pass
+
+        if page.locator(username_selector).count() > 0:
+            page.screenshot(path="debug_after_failed_login.png")
+            print("-> Screenshot saved: debug_after_failed_login.png")
             fatal("Login did not succeed. Check credentials!")
 
-        print("-> Login appears successful. Loading grades JSON...")
+        print("-> Login successful (page changed).")
 
-        # Load grades
+        print("-> Loading grades JSON...")
         page.goto(GRADES_URL, timeout=60000)
-        page.wait_for_load_state("networkidle", timeout=60000)
+        page.wait_for_load_state("networkidle")
 
-        body = page.inner_text("body")
-
-        # If HTML appears again, login failed
-        if "<html" in body.lower() or "login" in body.lower():
-            print("-> Grades page returned HTML instead of JSON.")
-            print("Body preview:\n", body[:400])
-            fatal("Not logged in -> grades URL returned HTML.")
-
-        # Parse JSON
-        try:
-            data = json.loads(body)
-        except Exception:
-            print("-> JSON parsing failed. Body was:")
-            print(body[:1000])
-            fatal("Grades response is NOT JSON.")
+        json_text = page.inner_text("body")
+        data = json.loads(json_text)
 
         browser.close()
         return data
@@ -193,12 +182,12 @@ def send_email(subject, body, to_addr):
     msg["To"] = to_addr
     msg.set_content(body)
 
-    print("-> Sending mail to", to_addr)
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=30) as smtp:
+    print("-> Sending mail…")
+    with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as smtp:
         smtp.starttls()
         smtp.login(SMTP_USER, SMTP_PASS)
         smtp.send_message(msg)
-    print("-> Mail sent")
+    print("-> Mail sent.")
 
 
 def git_commit_and_push(files, message):
@@ -206,7 +195,6 @@ def git_commit_and_push(files, message):
     subprocess.check_call(["git", "config", "user.email", GIT_COMMIT_EMAIL])
     subprocess.check_call(["git", "add"] + files)
 
-    # No changes = no crash
     try:
         subprocess.check_call(["git", "commit", "-m", message])
     except subprocess.CalledProcessError:
@@ -214,49 +202,33 @@ def git_commit_and_push(files, message):
         return
 
     if not GITHUB_TOKEN:
-        print("WARNING: No GITHUB_TOKEN provided. Skipping push.")
+        print("-> No GITHUB_TOKEN. Skipping push.")
         return
 
-    try:
-        origin_url = subprocess.check_output(
-            ["git", "remote", "get-url", "origin"]
-        ).decode().strip()
+    origin = subprocess.check_output(["git", "remote", "get-url", "origin"]).decode().strip()
+    if origin.startswith("https://"):
+        authenticated = origin.replace("https://", f"https://x-access-token:{GITHUB_TOKEN}@")
+        subprocess.check_call(["git", "remote", "set-url", "origin", authenticated])
 
-        if origin_url.startswith("https://"):
-            auth_url = origin_url.replace(
-                "https://",
-                f"https://x-access-token:{GITHUB_TOKEN}@"
-            )
-            subprocess.check_call(["git", "remote", "set-url", "origin", auth_url])
-
-        subprocess.check_call(["git", "push"])
-        print("-> Push successful")
-
-    except subprocess.CalledProcessError as e:
-        print("ERROR: Push failed (permissions?)")
-        print("Exception:", e)
-        print("-> Continuing.")
+    subprocess.check_call(["git", "push"])
+    print("-> Push OK.")
 
 
-# ---- Main ----
 def main():
     data = login_and_fetch()
 
     with open(CURRENT_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
-    # Extract grades
     try:
         grades = data["data"]["grades"]
     except:
-        fatal("Unexpected JSON structure — expected data.data.grades")
+        fatal("JSON format unexpected.")
 
-    # First run
     if not os.path.exists(PREV_FILE):
-        print("-> First run: saving previous.json and exiting")
-        subprocess.check_call(["git", "add", CURRENT_FILE])
+        print("-> First run, storing previous.json")
         subprocess.check_call(["git", "mv", CURRENT_FILE, PREV_FILE])
-        git_commit_and_push([PREV_FILE], f"Initial sample {datetime.utcnow().isoformat()}Z")
+        git_commit_and_push([PREV_FILE], "Initial sample")
         return
 
     with open(PREV_FILE, "r", encoding="utf-8") as f:
@@ -264,45 +236,35 @@ def main():
 
     prev_ids = {g["id"] for g in prev.get("data", {}).get("grades", [])}
     curr_ids = {g["id"] for g in grades}
-    new_ids = sorted(list(curr_ids - prev_ids))
+
+    new_ids = sorted(curr_ids - prev_ids)
 
     if not new_ids:
-        print("-> No new grades found")
-        if os.path.exists(CURRENT_FILE):
-            os.remove(CURRENT_FILE)
+        print("-> No new grades.")
         return
 
-    print("-> New grade IDs:", new_ids)
-
-    notifications = []
+    notes = []
     for g in grades:
         if g["id"] in new_ids:
-            subject = (
-                g.get("collection", {}).get("subject", {}).get("name")
-                or g.get("collection", {}).get("subject", {}).get("local_id")
-                or "Unbekanntes Fach"
-            )
-            collection = g.get("collection", {}).get("name") or "Unbenannte Sammlung"
-            notifications.append({
+            notes.append({
                 "id": g["id"],
-                "subject": subject,
-                "collection": collection,
+                "subject": g.get("collection", {}).get("subject", {}).get("name"),
+                "collection": g.get("collection", {}).get("name"),
                 "given_at": g.get("given_at")
             })
 
-    subj = f"[Noten-Update] {len(notifications)} neue Einträge"
-    body = "Neue Note(n):\n\n" + "\n\n".join(
-        f"- Fach: {n['subject']}\n  Bezeichnung: {n['collection']}\n  Datum: {n['given_at']}"
-        for n in notifications
-    ) + "\n\n(Hinweis: Der numerische Wert wird aus Datenschutzgründen nicht angezeigt.)"
+    subject = f"[Noten-Update] {len(notes)} neue Einträge"
+    body = "\n\n".join(
+        f"Fach: {n['subject']}\nBezeichnung: {n['collection']}\nDatum: {n['given_at']}"
+        for n in notes
+    )
 
-    send_email(subj, body, RECIPIENT)
+    send_email(subject, body, RECIPIENT)
 
     with open(PREV_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
-    git_commit_and_push([PREV_FILE], f"Updated sample {datetime.utcnow().isoformat()}Z")
-    print("-> Done.")
+    git_commit_and_push([PREV_FILE], "Updated sample")
 
 
 if __name__ == "__main__":

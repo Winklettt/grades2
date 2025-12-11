@@ -1,11 +1,11 @@
 # main.py
 """
 GitHub-Actions-ready script using Playwright for JS-login:
-- loggt sich in eine JS-seitige Seite ein
-- lädt JSON-Seite mit Noten (grades_url)
-- beim ersten Lauf: speichert sample als previous.json und beendet sich
-- später: findet neue grade-IDs, sendet E-Mail (ohne numerischen Wert)
-- updated previous.json (commit & push)
+- Performs login on a JS-rendered website
+- Loads JSON with grades (GRADES_URL)
+- First run: saves sample as previous.json
+- Later: detects new grade IDs, sends email (no numeric value)
+- Updates previous.json and commits/pushes
 """
 
 import os
@@ -17,6 +17,7 @@ from email.message import EmailMessage
 from datetime import datetime
 import subprocess
 from playwright.sync_api import sync_playwright
+
 
 # ---- Repository Secrets Wrapper ----
 def load_secrets():
@@ -32,12 +33,13 @@ def load_secrets():
         print("ERROR: Failed to decode BOT_SECRETS_B64:", e)
         sys.exit(1)
 
+
 SECRETS = load_secrets()
 
-# ---- Konfiguration aus Repository Secrets ----
+# ---- Config from Secrets ----
 LOGIN_URL = SECRETS.get("LOGIN_URL")
 GRADES_URL = SECRETS.get("GRADES_URL")
-LOGIN_FORM_FIELD_USER = SECRETS.get("LOGIN_FORM_FIELD_USER", "username")
+LOGIN_FORM_FIELD_USER = SECRETS.get("LOGIN_FORM_FIELD_USER", "identifier")
 LOGIN_FORM_FIELD_PASS = SECRETS.get("LOGIN_FORM_FIELD_PASS", "password")
 LOGIN_USERNAME = SECRETS.get("LOGIN_USERNAME")
 LOGIN_PASSWORD = SECRETS.get("LOGIN_PASSWORD")
@@ -59,14 +61,20 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 PREV_FILE = "previous.json"
 CURRENT_FILE = "current.json"
 
+
 # ---- Helpers ----
 def fatal(msg):
     print("ERROR:", msg)
     sys.exit(1)
 
+
 def login_and_fetch():
     """
-    Login via Playwright with automatic JS-render wait + flexible field detection.
+    Login via Playwright using ENTER KEY SUBMIT (works on your target site).
+    Includes:
+    - Field auto-detection
+    - Full debug output
+    - Login verification (detects login failure)
     """
 
     if not LOGIN_URL or not GRADES_URL or not LOGIN_USERNAME or not LOGIN_PASSWORD:
@@ -79,13 +87,11 @@ def login_and_fetch():
 
         print("-> Opening login page")
         page.goto(LOGIN_URL, timeout=60000)
-
-        # Wait for JS app to render
         page.wait_for_load_state("networkidle", timeout=60000)
 
         print("-> Login page loaded. Scanning inputs...")
 
-        # List all input fields for debugging
+        # Debug all inputs
         inputs = page.locator("input").all()
         print("-> Found input fields:")
         for i, inp in enumerate(inputs):
@@ -96,18 +102,16 @@ def login_and_fetch():
             except:
                 pass
 
-        # Try multiple possible username field names
-        possible_user_fields = [
+        # Potential input names
+        user_candidates = [
             LOGIN_FORM_FIELD_USER,
+            "identifier",
             "username",
             "email",
             "user",
             "login",
-            "identifier",
         ]
-
-        # Try multiple possible password fields
-        possible_pass_fields = [
+        pass_candidates = [
             LOGIN_FORM_FIELD_PASS,
             "password",
             "pass",
@@ -118,53 +122,69 @@ def login_and_fetch():
         password_selector = None
 
         # Detect username field
-        for field in possible_user_fields:
+        for field in user_candidates:
             sel = f'input[name="{field}"]'
             if page.locator(sel).count() > 0:
                 username_selector = sel
                 break
 
         # Detect password field
-        for field in possible_pass_fields:
+        for field in pass_candidates:
             sel = f'input[name="{field}"]'
             if page.locator(sel).count() > 0:
                 password_selector = sel
                 break
 
         if not username_selector:
-            fatal("Could not find username field! Check printed input names above.")
+            fatal("Could not locate username field!")
 
         if not password_selector:
-            fatal("Could not find password field! Check printed input names above.")
+            fatal("Could not locate password field!")
 
         print(f"-> Using username selector: {username_selector}")
         print(f"-> Using password selector: {password_selector}")
 
-        # Fill credentials
+        # Fill fields
         page.fill(username_selector, LOGIN_USERNAME)
         page.fill(password_selector, LOGIN_PASSWORD)
 
-        # Try clicking submit
-        print("-> Clicking login button")
-        page.click("button[type=submit], input[type=submit], button", timeout=60000)
+        # ---- CRITICAL FIX: submit via ENTER key ----
+        print("-> Submitting via ENTER key")
+        page.press(password_selector, "Enter")
 
-        # Wait until login finishes
+        # Wait for navigation
         page.wait_for_load_state("networkidle", timeout=60000)
 
-        print("-> Login successful (probably), loading grades JSON...")
+        # ---- Login success check ----
+        if "login" in page.url.lower():
+            print("-> Login failed or stuck. Page still shows login form.")
+            fatal("Login did not succeed. Check credentials!")
+
+        print("-> Login appears successful. Loading grades JSON...")
+
+        # Load grades
         page.goto(GRADES_URL, timeout=60000)
         page.wait_for_load_state("networkidle", timeout=60000)
 
+        body = page.inner_text("body")
+
+        # If HTML appears again, login failed
+        if "<html" in body.lower() or "login" in body.lower():
+            print("-> Grades page returned HTML instead of JSON.")
+            print("Body preview:\n", body[:400])
+            fatal("Not logged in -> grades URL returned HTML.")
+
+        # Parse JSON
         try:
-            json_text = page.inner_text("body")
-            data = json.loads(json_text)
-        except Exception as e:
-            print("-> Grades JSON parse failed.")
-            print("Body content was:\n", json_text[:1000])
-            fatal("Grades URL is not returning JSON. Wrong URL? Requires API token?")
+            data = json.loads(body)
+        except Exception:
+            print("-> JSON parsing failed. Body was:")
+            print(body[:1000])
+            fatal("Grades response is NOT JSON.")
 
         browser.close()
         return data
+
 
 def send_email(subject, body, to_addr):
     msg = EmailMessage()
@@ -180,12 +200,13 @@ def send_email(subject, body, to_addr):
         smtp.send_message(msg)
     print("-> Mail sent")
 
+
 def git_commit_and_push(files, message):
     subprocess.check_call(["git", "config", "user.name", GIT_COMMIT_NAME])
     subprocess.check_call(["git", "config", "user.email", GIT_COMMIT_EMAIL])
     subprocess.check_call(["git", "add"] + files)
 
-    # Do not crash if commit has nothing to commit
+    # No changes = no crash
     try:
         subprocess.check_call(["git", "commit", "-m", message])
     except subprocess.CalledProcessError:
@@ -212,9 +233,9 @@ def git_commit_and_push(files, message):
         print("-> Push successful")
 
     except subprocess.CalledProcessError as e:
-        print("ERROR: Push failed. Probably missing repo permissions.")
+        print("ERROR: Push failed (permissions?)")
         print("Exception:", e)
-        print("-> Continuing without stopping the workflow.")
+        print("-> Continuing.")
 
 
 # ---- Main ----
@@ -224,11 +245,13 @@ def main():
     with open(CURRENT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+    # Extract grades
     try:
         grades = data["data"]["grades"]
     except:
         fatal("Unexpected JSON structure — expected data.data.grades")
 
+    # First run
     if not os.path.exists(PREV_FILE):
         print("-> First run: saving previous.json and exiting")
         subprocess.check_call(["git", "add", CURRENT_FILE])
@@ -280,6 +303,7 @@ def main():
 
     git_commit_and_push([PREV_FILE], f"Updated sample {datetime.utcnow().isoformat()}Z")
     print("-> Done.")
+
 
 if __name__ == "__main__":
     main()

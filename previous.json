@@ -671,6 +671,31 @@
         "read_by_type": null
       },
       {
+        "id": 53574883,
+        "value": "14",
+        "given_at": "2025-12-04",
+        "read": false,
+        "collection": {
+          "id": 3309267,
+          "type": "Test",
+          "weighting": 1,
+          "name": "Blueskomposition",
+          "given_at": "2025-12-04",
+          "visible_from": null,
+          "interval_id": 6588,
+          "subject_id": 2216,
+          "teacher_id": 3946,
+          "subject": {
+            "id": 2216,
+            "local_id": "MU",
+            "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 53502209,
         "value": "13",
         "given_at": "2025-12-05",
@@ -696,6 +721,31 @@
         "read_by_type": null
       },
       {
+        "id": 53438873,
+        "value": "13",
+        "given_at": "2025-12-08",
+        "read": false,
+        "collection": {
+          "id": 3300743,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Comment UK",
+          "given_at": "2025-12-08",
+          "visible_from": null,
+          "interval_id": 6588,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 53576113,
         "value": "11",
         "given_at": "2025-12-10",
@@ -714,6 +764,31 @@
             "id": 2218,
             "local_id": "PH",
             "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 53618784,
+        "value": "13",
+        "given_at": "2025-12-11",
+        "read": false,
+        "collection": {
+          "id": 3311953,
+          "type": "mündlich",
+          "weighting": 1,
+          "name": "Semesternote",
+          "given_at": "2025-12-11",
+          "visible_from": null,
+          "interval_id": 6588,
+          "subject_id": 2202,
+          "teacher_id": 3969,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
             "for": "student",
             "tags": []
           }

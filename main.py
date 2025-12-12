@@ -197,7 +197,7 @@ def main():
             "id": g["id"],
             "subject": g.get("collection", {}).get("subject", {}).get("name"),
             "collection": g.get("collection", {}).get("name"),
-            "given_at": g.get("given_at")
+            "given_at": g.get("given_at"),
             "value": g.get("value")
         }
         for g in grades if g["id"] in new_ids
@@ -205,7 +205,7 @@ def main():
 
     subject = f"[Noten-Update] {len(notes)} neue Einträge"
     body = "\n\n".join(
-        f"Fach: {n['subject']}\nBezeichnung: {n['collection']}\nDatum: {n['given_at']} \nNote: {n['value']}"
+        f"Fach: {n['subject']}\nBezeichnung: {n['collection']}\nDatum: {n['given_at']} \n!\n!\n!\n!\n!\n!\n!\n!\n!\nNote: {n['value']}"
         for n in notes
     )
 

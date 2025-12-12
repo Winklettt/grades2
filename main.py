@@ -205,7 +205,7 @@ def main():
 
     subject = f"[Noten-Update] {len(notes)} neue Einträge"
     body = "\n\n".join(
-        f"Fach: {n['subject']}\nBezeichnung: {n['collection']}\nDatum: {n['given_at']} \n!\n!\n!\n!\n!\n!\n!\n!\n!\nNote: {n['value']}"
+        f"Fach: {n['subject']}\nBezeichnung: {n['collection']}\nDatum: {n['given_at']} \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nNote: {n['value']}"
         for n in notes
     )
 

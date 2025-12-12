@@ -198,6 +198,7 @@ def main():
             "subject": g.get("collection", {}).get("subject", {}).get("name"),
             "collection": g.get("collection", {}).get("name"),
             "given_at": g.get("given_at")
+            "value": g.get("value")
         }
         for g in grades if g["id"] in new_ids
     ]

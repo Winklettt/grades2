@@ -596,6 +596,31 @@
         "read_by_type": null
       },
       {
+        "id": 53786492,
+        "value": "15",
+        "given_at": "2025-11-21",
+        "read": false,
+        "collection": {
+          "id": 3111204,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur",
+          "given_at": "2025-11-21",
+          "visible_from": null,
+          "interval_id": 6588,
+          "subject_id": 2204,
+          "teacher_id": 3984,
+          "subject": {
+            "id": 2204,
+            "local_id": "ETH",
+            "name": "Ethik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 53172474,
         "value": "13",
         "given_at": "2025-11-21",

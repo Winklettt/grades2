@@ -43,7 +43,7 @@ jobs:
           echo "BOT_SECRETS_B64 length: ${#BOT_SECRETS_B64}"
           decoded="$(echo "$BOT_SECRETS_B64" | base64 -d)"
           echo "Decoded preview (first 200 chars):"
-          echo "${decoded:0:200}"
+          
 
       - name: Export GITHUB_TOKEN
         run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV

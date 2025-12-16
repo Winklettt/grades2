@@ -92,11 +92,11 @@ def login_and_fetch():
         if not username_selector or not password_selector:
             fatal("Could not find username or password field.")
 
-        print(f"-> ENTERING USERNAME: {LOGIN_USERNAME}")
+        print(f"-> ENTERING USERNAME: ")
         page.fill(username_selector, LOGIN_USERNAME)
         print("-> ENTERED username (masked by site JS)")
 
-        print(f"-> ENTERING PASSWORD: {LOGIN_PASSWORD}")
+        print(f"-> ENTERING PASSWORD: ")
         page.fill(password_selector, LOGIN_PASSWORD)
         print("-> ENTERED password (masked by site JS)")
 

@@ -819,6 +819,31 @@
           }
         },
         "read_by_type": null
+      },
+      {
+        "id": 58506143,
+        "value": "14",
+        "given_at": "2026-01-21",
+        "read": false,
+        "collection": {
+          "id": 3484639,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "1. Test \"Beurteilende Statistik\"",
+          "given_at": "2026-01-21",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
       }
     ],
     "tags": [],

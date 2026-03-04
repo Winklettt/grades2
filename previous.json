@@ -872,7 +872,7 @@
       },
       {
         "id": 60186918,
-        "value": "14",
+        "value": "15",
         "given_at": "2026-01-27",
         "read": false,
         "collection": {
@@ -889,6 +889,31 @@
             "id": 2201,
             "local_id": "CH",
             "name": "Chemie",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 60307293,
+        "value": "10",
+        "given_at": "2026-02-03",
+        "read": false,
+        "collection": {
+          "id": 3690435,
+          "type": "sonstige",
+          "weighting": 1,
+          "name": "Rahmenbedingungen und Folgen internationaler Friedensverträge im 20. Jahrhundert",
+          "given_at": "2026-02-03",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
             "for": "student",
             "tags": []
           }
@@ -914,6 +939,31 @@
             "id": 2203,
             "local_id": "EN",
             "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 60425457,
+        "value": "15",
+        "given_at": "2026-02-24",
+        "read": false,
+        "collection": {
+          "id": 3700753,
+          "type": "KL",
+          "weighting": 1,
+          "name": "A-Klausur",
+          "given_at": "2026-02-24",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
             "for": "student",
             "tags": []
           }

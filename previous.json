@@ -896,6 +896,31 @@
         "read_by_type": null
       },
       {
+        "id": 60450782,
+        "value": "7",
+        "given_at": "2026-01-29",
+        "read": false,
+        "collection": {
+          "id": 3703095,
+          "type": "kl",
+          "weighting": 1,
+          "name": "Klausur Wellen",
+          "given_at": "2026-01-29",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2218,
+          "teacher_id": 47679,
+          "subject": {
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 60307293,
         "value": "10",
         "given_at": "2026-02-03",

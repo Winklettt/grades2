@@ -879,7 +879,7 @@
           "id": 3346463,
           "type": "Klausur",
           "weighting": 1,
-          "name": "Klausur unter abiturähnlichen Bedingungen",
+          "name": "Klausur unter abiturähnlichen Bedingungen_Interpretation oder Sachtexterörterung",
           "given_at": "2026-01-26",
           "visible_from": null,
           "interval_id": 6590,
@@ -1064,6 +1064,31 @@
             "id": 2204,
             "local_id": "ETH",
             "name": "Ethik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 60909313,
+        "value": "11",
+        "given_at": "2026-03-17",
+        "read": false,
+        "collection": {
+          "id": 3736615,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Satz von Hess",
+          "given_at": "2026-03-17",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2201,
+          "teacher_id": 7819,
+          "subject": {
+            "id": 2201,
+            "local_id": "CH",
+            "name": "Chemie",
             "for": "student",
             "tags": []
           }

@@ -996,6 +996,31 @@
         "read_by_type": null
       },
       {
+        "id": 61320248,
+        "value": "15",
+        "given_at": "2026-02-06",
+        "read": false,
+        "collection": {
+          "id": 3684198,
+          "type": "LK",
+          "weighting": 1,
+          "name": "sprachpraktische Prüfung",
+          "given_at": "2026-02-06",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 60425457,
         "value": "15",
         "given_at": "2026-02-24",

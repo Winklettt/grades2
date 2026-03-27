@@ -1346,6 +1346,56 @@
         "read_by_type": null
       },
       {
+        "id": 61355836,
+        "value": "10",
+        "given_at": "2026-03-21",
+        "read": false,
+        "collection": {
+          "id": 3748135,
+          "type": "Schnelligkeit",
+          "weighting": 1,
+          "name": "Flankensprünge oder Schlängellauf",
+          "given_at": "2026-03-21",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 61353789,
+        "value": "0",
+        "given_at": "2026-03-21",
+        "read": false,
+        "collection": {
+          "id": 3748133,
+          "type": "Ausdauer",
+          "weighting": 1,
+          "name": "Levellauf",
+          "given_at": "2026-03-21",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 61052745,
         "value": "14",
         "given_at": "2026-03-21",
@@ -1364,6 +1414,56 @@
             "id": 2216,
             "local_id": "MU",
             "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 61355130,
+        "value": "10",
+        "given_at": "2026-03-21",
+        "read": false,
+        "collection": {
+          "id": 3748134,
+          "type": "Kraft",
+          "weighting": 1,
+          "name": "Kraft Beine",
+          "given_at": "2026-03-21",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 61354375,
+        "value": "9",
+        "given_at": "2026-03-21",
+        "read": false,
+        "collection": {
+          "id": 3748132,
+          "type": "Kraft",
+          "weighting": 1,
+          "name": "Kraft Arme",
+          "given_at": "2026-03-21",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
             "for": "student",
             "tags": []
           }

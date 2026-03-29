@@ -32,6 +32,8 @@ def load_secrets():
 
 SECRETS = load_secrets()
 
+print(SECRETS)
+
 LOGIN_URL = SECRETS.get("LOGIN_URL")
 GRADES_URL = SECRETS.get("GRADES_URL")
 LOGIN_USERNAME = SECRETS.get("LOGIN_USERNAME")

@@ -1246,6 +1246,31 @@
         "read_by_type": null
       },
       {
+        "id": 61151047,
+        "value": "14",
+        "given_at": "2026-03-13",
+        "read": false,
+        "collection": {
+          "id": 3722065,
+          "type": "kreativ-reflexiv",
+          "weighting": 1,
+          "name": "Erpenbeck_Reflexion",
+          "given_at": "2026-03-13",
+          "visible_from": null,
+          "interval_id": 6590,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
         "id": 61482500,
         "value": "14",
         "given_at": "2026-03-16",

@@ -10,154 +10,29 @@
     "phone": null,
     "meta_groups": [
       {
-        "id": 248494,
-        "local_id": "12/3 - Tutorenkurs",
-        "name": "12/3 - Tutorenkurs",
+        "id": 177114,
+        "local_id": "11/3 - Tutorenkurs",
+        "name": "11/3 - Tutorenkurs",
         "meta": 1,
-        "level_id": 352,
-        "year_id": 2576,
+        "level_id": 351,
+        "year_id": 1827,
         "tags": []
       }
     ],
     "grades": [
       {
-        "id": 52228354,
-        "value": "12",
-        "given_at": "2025-08-26",
+        "id": 32481815,
+        "value": "14",
+        "given_at": "2024-08-23",
         "read": false,
         "collection": {
-          "id": 3053516,
+          "id": 2013175,
           "type": "LK",
           "weighting": 1,
-          "name": "BKR",
-          "given_at": "2025-08-26",
+          "name": "mini presentation on a quote",
+          "given_at": "2024-08-23",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2208,
-          "teacher_id": 3925,
-          "subject": {
-            "id": 2208,
-            "local_id": "G/R/W",
-            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53097327,
-        "value": "15",
-        "given_at": "2025-08-29",
-        "read": false,
-        "collection": {
-          "id": 3111195,
-          "type": "mdlpraktschr",
-          "weighting": 1,
-          "name": "Projekt Aristoteles",
-          "given_at": "2025-08-29",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2204,
-          "teacher_id": 3984,
-          "subject": {
-            "id": 2204,
-            "local_id": "ETH",
-            "name": "Ethik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 50348778,
-        "value": "15",
-        "given_at": "2025-09-15",
-        "read": false,
-        "collection": {
-          "id": 3103448,
-          "type": "LK",
-          "weighting": 1,
-          "name": "1. LK \"Grundlagen der Automatentheorie\"",
-          "given_at": "2025-09-15",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2211,
-          "teacher_id": 17598,
-          "subject": {
-            "id": 2211,
-            "local_id": "INF",
-            "name": "Informatik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 50839193,
-        "value": "10",
-        "given_at": "2025-09-16",
-        "read": false,
-        "collection": {
-          "id": 3134802,
-          "type": "KL",
-          "weighting": 1,
-          "name": "Klausur 12/I: Politische Theorie",
-          "given_at": "2025-09-16",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2208,
-          "teacher_id": 3925,
-          "subject": {
-            "id": 2208,
-            "local_id": "G/R/W",
-            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 51451269,
-        "value": "15",
-        "given_at": "2025-09-18",
-        "read": false,
-        "collection": {
-          "id": 3101861,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "1. Klausur - Mechanische Schwingungen",
-          "given_at": "2025-09-18",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2218,
-          "teacher_id": 47679,
-          "subject": {
-            "id": 2218,
-            "local_id": "PH",
-            "name": "Physik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 50532092,
-        "value": "15",
-        "given_at": "2025-09-23",
-        "read": false,
-        "collection": {
-          "id": 3115612,
-          "type": "LK",
-          "weighting": 1,
-          "name": "The Great Gatsby oral presentation and written assignment",
-          "given_at": "2025-09-23",
-          "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4626,
           "subject_id": 2203,
           "teacher_id": 3922,
           "subject": {
@@ -171,24 +46,124 @@
         "read_by_type": null
       },
       {
-        "id": 51421483,
-        "value": "15",
-        "given_at": "2025-09-25",
+        "id": 32980476,
+        "value": "13",
+        "given_at": "2024-09-02",
         "read": false,
         "collection": {
-          "id": 3123808,
+          "id": 2051416,
+          "type": "Test",
+          "weighting": 1,
+          "name": "1. Test: Kommunikation und Sprache",
+          "given_at": "2024-09-02",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 34218805,
+        "value": "15",
+        "given_at": "2024-09-06",
+        "read": false,
+        "collection": {
+          "id": 2036759,
+          "type": "LK",
+          "weighting": 1,
+          "name": "WÜ 11/1",
+          "given_at": "2024-09-06",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 32922533,
+        "value": "15",
+        "given_at": "2024-09-06",
+        "read": false,
+        "collection": {
+          "id": 2047314,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Bohr-Sommerfeldsches Atommodell",
+          "given_at": "2024-09-06",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2201,
+          "teacher_id": 7819,
+          "subject": {
+            "id": 2201,
+            "local_id": "CH",
+            "name": "Chemie",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 33130740,
+        "value": "15",
+        "given_at": "2024-09-12",
+        "read": false,
+        "collection": {
+          "id": 2061897,
+          "type": "LK",
+          "weighting": 1,
+          "name": "1. Test \"Eigenschaften von ganz- und gebrochenrationalen Funktionen\"",
+          "given_at": "2024-09-12",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 33323014,
+        "value": "10",
+        "given_at": "2024-09-16",
+        "read": false,
+        "collection": {
+          "id": 2057610,
           "type": "Sonstige",
           "weighting": 1,
-          "name": "WÜ",
-          "given_at": "2025-09-25",
+          "name": "Test „Industrialisierung in England und Deutschland“",
+          "given_at": "2024-09-16",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2215,
-          "teacher_id": 3913,
+          "interval_id": 4626,
+          "subject_id": 2209,
+          "teacher_id": 3968,
           "subject": {
-            "id": 2215,
-            "local_id": "MA",
-            "name": "Mathematik",
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
             "for": "student",
             "tags": []
           }
@@ -196,118 +171,43 @@
         "read_by_type": null
       },
       {
-        "id": 51167367,
+        "id": 34100439,
+        "value": "12",
+        "given_at": "2024-09-16",
+        "read": false,
+        "collection": {
+          "id": 2123601,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Analyse Wahlkampfkommunikation",
+          "given_at": "2024-09-16",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2208,
+          "teacher_id": 3925,
+          "subject": {
+            "id": 2208,
+            "local_id": "G/R/W",
+            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 33976940,
         "value": "14",
-        "given_at": "2025-09-26",
+        "given_at": "2024-09-19",
         "read": false,
         "collection": {
-          "id": 3154860,
-          "type": "Klausur",
+          "id": 2116499,
+          "type": "LK",
           "weighting": 1,
-          "name": "1. Klausur Gedichtvergleich",
-          "given_at": "2025-09-26",
+          "name": "1. LK \"Netzwerke\"",
+          "given_at": "2024-09-19",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2202,
-          "teacher_id": 3942,
-          "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 51369246,
-        "value": "13",
-        "given_at": "2025-09-30",
-        "read": false,
-        "collection": {
-          "id": 3115625,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur \"Literary Analysis\"",
-          "given_at": "2025-09-30",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2203,
-          "teacher_id": 3922,
-          "subject": {
-            "id": 2203,
-            "local_id": "EN",
-            "name": "Englisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 51163721,
-        "value": "13",
-        "given_at": "2025-10-13",
-        "read": false,
-        "collection": {
-          "id": 3154859,
-          "type": "Kreativleistung",
-          "weighting": 1,
-          "name": "Gestaltete Rezitation mit Kontextualisierung",
-          "given_at": "2025-10-13",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2202,
-          "teacher_id": 3942,
-          "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 52410659,
-        "value": "13",
-        "given_at": "2025-10-24",
-        "read": false,
-        "collection": {
-          "id": 3234263,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur",
-          "given_at": "2025-10-24",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2222,
-          "teacher_id": 3997,
-          "subject": {
-            "id": 2222,
-            "local_id": "SPA",
-            "name": "Spanisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 51782122,
-        "value": "13",
-        "given_at": "2025-10-27",
-        "read": false,
-        "collection": {
-          "id": 3194301,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "1. Klausur \"Theoretische Informatik\"",
-          "given_at": "2025-10-27",
-          "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4626,
           "subject_id": 2211,
           "teacher_id": 17598,
           "subject": {
@@ -321,24 +221,24 @@
         "read_by_type": null
       },
       {
-        "id": 51880288,
-        "value": "15",
-        "given_at": "2025-10-29",
+        "id": 33924886,
+        "value": "14",
+        "given_at": "2024-09-27",
         "read": false,
         "collection": {
-          "id": 3188155,
-          "type": "KL",
+          "id": 2113462,
+          "type": "kreativ-reflexiv",
           "weighting": 1,
-          "name": "1. Klausur \"Integralrechnung\"",
-          "given_at": "2025-10-29",
+          "name": "Figurine mit schriftlicher Reflexion zu \"Woyzeck\"",
+          "given_at": "2024-09-27",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2215,
-          "teacher_id": 3913,
+          "interval_id": 4626,
+          "subject_id": 2202,
+          "teacher_id": 3942,
           "subject": {
-            "id": 2215,
-            "local_id": "MA",
-            "name": "Mathematik",
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
             "for": "student",
             "tags": []
           }
@@ -346,18 +246,18 @@
         "read_by_type": null
       },
       {
-        "id": 51799758,
-        "value": "13",
-        "given_at": "2025-10-30",
+        "id": 34062581,
+        "value": "14",
+        "given_at": "2024-09-30",
         "read": false,
         "collection": {
-          "id": 3195350,
-          "type": "Klausur",
+          "id": 2121253,
+          "type": "Test",
           "weighting": 1,
-          "name": "Klausur",
-          "given_at": "2025-10-30",
+          "name": "Test",
+          "given_at": "2024-09-30",
           "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4626,
           "subject_id": 2216,
           "teacher_id": 3946,
           "subject": {
@@ -371,24 +271,24 @@
         "read_by_type": null
       },
       {
-        "id": 53502216,
-        "value": "13",
-        "given_at": "2025-11-06",
+        "id": 34103715,
+        "value": "15",
+        "given_at": "2024-10-01",
         "read": false,
         "collection": {
-          "id": 3115631,
+          "id": 2104515,
           "type": "LK",
           "weighting": 1,
-          "name": "Semestertask",
-          "given_at": "2025-11-06",
+          "name": "schriftliche Kontrolle \"ser joven\"",
+          "given_at": "2024-10-01",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2203,
-          "teacher_id": 3922,
+          "interval_id": 4626,
+          "subject_id": 2222,
+          "teacher_id": 3997,
           "subject": {
-            "id": 2203,
-            "local_id": "EN",
-            "name": "Englisch",
+            "id": 2222,
+            "local_id": "SPA",
+            "name": "Spanisch",
             "for": "student",
             "tags": []
           }
@@ -396,18 +296,18 @@
         "read_by_type": null
       },
       {
-        "id": 53026355,
-        "value": "15",
-        "given_at": "2025-11-06",
+        "id": 33957429,
+        "value": "11",
+        "given_at": "2024-10-02",
         "read": false,
         "collection": {
-          "id": 3171243,
-          "type": "schriftlich",
+          "id": 2051430,
+          "type": "Klausur",
           "weighting": 1,
-          "name": "Stundenleistung Kafka (Strafkolonie, Parabel, Erzähltechnik)",
-          "given_at": "2025-11-06",
+          "name": "1. Klausur: Dramenszeneninterpretation Woyzeck",
+          "given_at": "2024-10-02",
           "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4626,
           "subject_id": 2202,
           "teacher_id": 3942,
           "subject": {
@@ -421,18 +321,168 @@
         "read_by_type": null
       },
       {
-        "id": 52428917,
-        "value": "10",
-        "given_at": "2025-11-07",
+        "id": 34123962,
+        "value": "14",
+        "given_at": "2024-10-22",
         "read": false,
         "collection": {
-          "id": 3214397,
+          "id": 2125270,
           "type": "Test",
           "weighting": 1,
-          "name": "Theorie-Test",
-          "given_at": "2025-11-07",
+          "name": "Willensfreiheit",
+          "given_at": "2024-10-22",
           "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4626,
+          "subject_id": 2204,
+          "teacher_id": 3984,
+          "subject": {
+            "id": 2204,
+            "local_id": "ETH",
+            "name": "Ethik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 34239908,
+        "value": "13",
+        "given_at": "2024-10-25",
+        "read": false,
+        "collection": {
+          "id": 2133926,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "The individual and Society",
+          "given_at": "2024-10-25",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 35139301,
+        "value": "13",
+        "given_at": "2024-10-29",
+        "read": false,
+        "collection": {
+          "id": 2141599,
+          "type": "KL",
+          "weighting": 1,
+          "name": "Klausur 11/I: Parteien im Wahlkapf",
+          "given_at": "2024-10-29",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2208,
+          "teacher_id": 3925,
+          "subject": {
+            "id": 2208,
+            "local_id": "G/R/W",
+            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 34576295,
+        "value": "13",
+        "given_at": "2024-11-04",
+        "read": false,
+        "collection": {
+          "id": 2155332,
+          "type": "LK",
+          "weighting": 1,
+          "name": "LK1",
+          "given_at": "2024-11-04",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2218,
+          "teacher_id": 4007,
+          "subject": {
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 34754142,
+        "value": "13",
+        "given_at": "2024-11-08",
+        "read": false,
+        "collection": {
+          "id": 2166961,
+          "type": "schriftlich",
+          "weighting": 1,
+          "name": "Stundenleistungen",
+          "given_at": "2024-11-08",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 34985718,
+        "value": "15",
+        "given_at": "2024-11-12",
+        "read": false,
+        "collection": {
+          "id": 2181484,
+          "type": "KL",
+          "weighting": 1,
+          "name": "1. Klausur \"Differentialrechnung\"",
+          "given_at": "2024-11-12",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 38299262,
+        "value": "1",
+        "given_at": "2024-11-13",
+        "read": false,
+        "collection": {
+          "id": 2179180,
+          "type": "sonstigeII",
+          "weighting": 1,
+          "name": "Wurfkraft und -präzision",
+          "given_at": "2024-11-13",
+          "visible_from": null,
+          "interval_id": 4626,
           "subject_id": 2223,
           "teacher_id": 3933,
           "subject": {
@@ -446,18 +496,968 @@
         "read_by_type": null
       },
       {
-        "id": 53330305,
+        "id": 41768087,
+        "value": "4",
+        "given_at": "2024-11-13",
+        "read": false,
+        "collection": {
+          "id": 2179187,
+          "type": "SN",
+          "weighting": 1,
+          "name": "Spielnote",
+          "given_at": "2024-11-13",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36501210,
+        "value": "7",
+        "given_at": "2024-11-13",
+        "read": false,
+        "collection": {
+          "id": 2179185,
+          "type": "sonstigeII",
+          "weighting": 1,
+          "name": "8er-Lauf",
+          "given_at": "2024-11-13",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36318130,
+        "value": "14",
+        "given_at": "2024-11-19",
+        "read": false,
+        "collection": {
+          "id": 2104525,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "1. Klausur",
+          "given_at": "2024-11-19",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2222,
+          "teacher_id": 3997,
+          "subject": {
+            "id": 2222,
+            "local_id": "SPA",
+            "name": "Spanisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 35544276,
+        "value": "14",
+        "given_at": "2024-11-21",
+        "read": false,
+        "collection": {
+          "id": 2216832,
+          "type": "Klausur",
+          "weighting": 2,
+          "name": "1. Klausur \"Grundlagen der Programmierung\"",
+          "given_at": "2024-11-21",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2211,
+          "teacher_id": 17598,
+          "subject": {
+            "id": 2211,
+            "local_id": "INF",
+            "name": "Informatik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 35335918,
+        "value": "11",
+        "given_at": "2024-11-21",
+        "read": false,
+        "collection": {
+          "id": 2179179,
+          "type": "sonstigeI",
+          "weighting": 1,
+          "name": "Test",
+          "given_at": "2024-11-21",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36150926,
+        "value": "13",
+        "given_at": "2024-11-25",
+        "read": false,
+        "collection": {
+          "id": 2255283,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur",
+          "given_at": "2024-11-25",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2216,
+          "teacher_id": 3946,
+          "subject": {
+            "id": 2216,
+            "local_id": "MU",
+            "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36694268,
+        "value": "15",
+        "given_at": "2024-12-03",
+        "read": false,
+        "collection": {
+          "id": 2127050,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur",
+          "given_at": "2024-12-03",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2204,
+          "teacher_id": 3984,
+          "subject": {
+            "id": 2204,
+            "local_id": "ETH",
+            "name": "Ethik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36579582,
+        "value": "14",
+        "given_at": "2024-12-09",
+        "read": false,
+        "collection": {
+          "id": 2240847,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Nationale, Liebesleben und konservative Ideen und ihre Umsetzung in der ersten Hälfte des 19. Jhd.",
+          "given_at": "2024-12-09",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36536809,
+        "value": "11",
+        "given_at": "2024-12-13",
+        "read": false,
+        "collection": {
+          "id": 2280564,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Redoxreaktionen",
+          "given_at": "2024-12-13",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2201,
+          "teacher_id": 7819,
+          "subject": {
+            "id": 2201,
+            "local_id": "CH",
+            "name": "Chemie",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36949821,
+        "value": "14",
+        "given_at": "2024-12-16",
+        "read": false,
+        "collection": {
+          "id": 2263107,
+          "type": "Komplexleistung",
+          "weighting": 1,
+          "name": "Formulieren und Halten einer Rede",
+          "given_at": "2024-12-16",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 37715277,
+        "value": "14",
+        "given_at": "2024-12-17",
+        "read": false,
+        "collection": {
+          "id": 2315053,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Test Grundlagen Medien",
+          "given_at": "2024-12-17",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2208,
+          "teacher_id": 3925,
+          "subject": {
+            "id": 2208,
+            "local_id": "G/R/W",
+            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36949832,
+        "value": "11",
+        "given_at": "2024-12-19",
+        "read": false,
+        "collection": {
+          "id": 2282766,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Sachtextanalyse mit Erörterung",
+          "given_at": "2024-12-19",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36517163,
+        "value": "13",
+        "given_at": "2024-12-23",
+        "read": false,
+        "collection": {
+          "id": 2279747,
+          "type": "LK",
+          "weighting": 1,
+          "name": "SE",
+          "given_at": "2024-12-23",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2218,
+          "teacher_id": 4007,
+          "subject": {
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 36689304,
+        "value": "15",
+        "given_at": "2025-01-06",
+        "read": false,
+        "collection": {
+          "id": 2290804,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Vocabulary Test",
+          "given_at": "2025-01-06",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 38253670,
+        "value": "14",
+        "given_at": "2025-01-07",
+        "read": false,
+        "collection": {
+          "id": 2294433,
+          "type": "mündlich-praktisch",
+          "weighting": 1,
+          "name": "komplexe Aufgabe",
+          "given_at": "2025-01-07",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2204,
+          "teacher_id": 3984,
+          "subject": {
+            "id": 2204,
+            "local_id": "ETH",
+            "name": "Ethik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 37374055,
+        "value": "15",
+        "given_at": "2025-01-16",
+        "read": false,
+        "collection": {
+          "id": 2341960,
+          "type": "LK",
+          "weighting": 1,
+          "name": "2. LK \"Datenstrukturen & Programmierung\"",
+          "given_at": "2025-01-16",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2211,
+          "teacher_id": 17598,
+          "subject": {
+            "id": 2211,
+            "local_id": "INF",
+            "name": "Informatik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 40694589,
+        "value": "15",
+        "given_at": "2025-01-21",
+        "read": false,
+        "collection": {
+          "id": 2518010,
+          "type": "Test",
+          "weighting": 1,
+          "name": "Künstlerischer Vortrag",
+          "given_at": "2025-01-21",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2216,
+          "teacher_id": 3946,
+          "subject": {
+            "id": 2216,
+            "local_id": "MU",
+            "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 38935082,
+        "value": "15",
+        "given_at": "2025-01-23",
+        "read": false,
+        "collection": {
+          "id": 2431219,
+          "type": "LK",
+          "weighting": 1,
+          "name": "2. Test \"Kurvendiskussion, Anwendungs- und Streckbriefaufgabe\"",
+          "given_at": "2025-01-23",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 40181543,
+        "value": "14",
+        "given_at": "2025-01-24",
+        "read": false,
+        "collection": {
+          "id": 2314278,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Speech Analysis",
+          "given_at": "2025-01-24",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 39975054,
+        "value": "14",
+        "given_at": "2025-01-27",
+        "read": false,
+        "collection": {
+          "id": 2432248,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "Zeitungsartikel: Kaiserreich zwischen Tradition und Moderne",
+          "given_at": "2025-01-27",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 41303217,
+        "value": "15",
+        "given_at": "2025-01-27",
+        "read": false,
+        "collection": {
+          "id": 2314295,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Semesterbewertung und Semestertask",
+          "given_at": "2025-01-27",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 41871781,
+        "value": "13",
+        "given_at": "2025-01-31",
+        "read": false,
+        "collection": {
+          "id": 2498212,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Tägliche Übung",
+          "given_at": "2025-01-31",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2201,
+          "teacher_id": 7819,
+          "subject": {
+            "id": 2201,
+            "local_id": "CH",
+            "name": "Chemie",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 40755665,
+        "value": "10",
+        "given_at": "2025-02-02",
+        "read": false,
+        "collection": {
+          "id": 2520985,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur",
+          "given_at": "2025-02-02",
+          "visible_from": null,
+          "interval_id": 4626,
+          "subject_id": 2218,
+          "teacher_id": 4007,
+          "subject": {
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 43334015,
+        "value": "15",
+        "given_at": "2025-03-17",
+        "read": false,
+        "collection": {
+          "id": 2679209,
+          "type": "Test",
+          "weighting": 1,
+          "name": "Test Wiener Klassik",
+          "given_at": "2025-03-17",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2216,
+          "teacher_id": 3946,
+          "subject": {
+            "id": 2216,
+            "local_id": "MU",
+            "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 42842371,
+        "value": "12",
+        "given_at": "2025-03-20",
+        "read": false,
+        "collection": {
+          "id": 2634572,
+          "type": "Test",
+          "weighting": 1,
+          "name": "1. Epochentest in Kombination mit Schillers \"Maria Stuart\"",
+          "given_at": "2025-03-14",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 42760446,
+        "value": "15",
+        "given_at": "2025-03-20",
+        "read": false,
+        "collection": {
+          "id": 2636591,
+          "type": "LK",
+          "weighting": 1,
+          "name": "3. LK \"Unterprogramme, Rekursion\"",
+          "given_at": "2025-03-20",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2211,
+          "teacher_id": 17598,
+          "subject": {
+            "id": 2211,
+            "local_id": "INF",
+            "name": "Informatik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 42843137,
+        "value": "13",
+        "given_at": "2025-03-24",
+        "read": false,
+        "collection": {
+          "id": 2643830,
+          "type": "schriftlich",
+          "weighting": 1,
+          "name": "Stundenleistungen",
+          "given_at": "2025-03-24",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44395414,
+        "value": "11",
+        "given_at": "2025-03-24",
+        "read": false,
+        "collection": {
+          "id": 2634577,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "1. Klausur: Literarische Erörterung",
+          "given_at": "2025-03-24",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 43823889,
+        "value": "14",
+        "given_at": "2025-03-25",
+        "read": false,
+        "collection": {
+          "id": 2711264,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Control voz pasiva y Segunda República",
+          "given_at": "2025-03-25",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2222,
+          "teacher_id": 3997,
+          "subject": {
+            "id": 2222,
+            "local_id": "SPA",
+            "name": "Spanisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 42933344,
+        "value": "15",
+        "given_at": "2025-03-26",
+        "read": false,
+        "collection": {
+          "id": 2650426,
+          "type": "LK",
+          "weighting": 1,
+          "name": "SE",
+          "given_at": "2025-03-26",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2218,
+          "teacher_id": 4007,
+          "subject": {
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 43377105,
+        "value": "15",
+        "given_at": "2025-04-07",
+        "read": false,
+        "collection": {
+          "id": 2682085,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Vocabulary - Listening - Grammar",
+          "given_at": "2025-04-07",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 43475020,
+        "value": "15",
+        "given_at": "2025-04-09",
+        "read": false,
+        "collection": {
+          "id": 2689075,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "WÜ-Note",
+          "given_at": "2025-04-09",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44068272,
+        "value": "13",
+        "given_at": "2025-04-10",
+        "read": false,
+        "collection": {
+          "id": 2689081,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "1. Klausur 11/2",
+          "given_at": "2025-04-10",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44481946,
+        "value": "12",
+        "given_at": "2025-04-15",
+        "read": false,
+        "collection": {
+          "id": 2761228,
+          "type": "KL",
+          "weighting": 1,
+          "name": "Klausur 11/II: Außenpolitik der BRD",
+          "given_at": "2025-04-15",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2208,
+          "teacher_id": 3925,
+          "subject": {
+            "id": 2208,
+            "local_id": "G/R/W",
+            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44995855,
+        "value": "14",
+        "given_at": "2025-04-29",
+        "read": false,
+        "collection": {
+          "id": 2711271,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur: España durante la Segunda República: redacción libre",
+          "given_at": "2025-04-29",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2222,
+          "teacher_id": 3997,
+          "subject": {
+            "id": 2222,
+            "local_id": "SPA",
+            "name": "Spanisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44175036,
+        "value": "14",
+        "given_at": "2025-05-02",
+        "read": false,
+        "collection": {
+          "id": 2736835,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "Ursachen des Scheiterns der Weimarer Republik (Vortragsreihe)",
+          "given_at": "2025-05-02",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 44780326,
+        "value": "15",
+        "given_at": "2025-05-05",
+        "read": false,
+        "collection": {
+          "id": 2783531,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur Wiener Klassik",
+          "given_at": "2025-05-05",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2216,
+          "teacher_id": 3946,
+          "subject": {
+            "id": 2216,
+            "local_id": "MU",
+            "name": "Musik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 45227818,
+        "value": "12",
+        "given_at": "2025-05-07",
+        "read": false,
+        "collection": {
+          "id": 2749357,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "Analyse von Historikerdarstellungen zum Scheitern der Weimarer Republik",
+          "given_at": "2025-05-12",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 45083656,
         "value": "6",
-        "given_at": "2025-11-07",
+        "given_at": "2025-05-08",
         "read": false,
         "collection": {
-          "id": 3214400,
-          "type": "SF",
+          "id": 2759791,
+          "type": "Basistest",
           "weighting": 1,
-          "name": "Spielfähigkeit",
-          "given_at": "2025-11-07",
+          "name": "II (Gesamtkoordinationstest oder Stützeln)",
+          "given_at": "2025-05-08",
           "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4627,
           "subject_id": 2223,
           "teacher_id": 3933,
           "subject": {
@@ -471,293 +1471,18 @@
         "read_by_type": null
       },
       {
-        "id": 53329647,
-        "value": "7",
-        "given_at": "2025-11-07",
-        "read": false,
-        "collection": {
-          "id": 3214407,
-          "type": "Praxis",
-          "weighting": 1,
-          "name": "Technik OZ und UZ",
-          "given_at": "2025-11-07",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 52708848,
-        "value": "7",
-        "given_at": "2025-11-07",
-        "read": false,
-        "collection": {
-          "id": 3214404,
-          "type": "Praxis",
-          "weighting": 1,
-          "name": "Linienlauf",
-          "given_at": "2025-11-07",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 52742911,
+        "id": 44418199,
         "value": "14",
-        "given_at": "2025-11-11",
+        "given_at": "2025-05-09",
         "read": false,
         "collection": {
-          "id": 3232479,
+          "id": 2756371,
           "type": "Klausur",
           "weighting": 1,
-          "name": "Elektrochemische Reaktionen",
-          "given_at": "2025-11-11",
+          "name": "Globalization",
+          "given_at": "2025-05-09",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2201,
-          "teacher_id": 7819,
-          "subject": {
-            "id": 2201,
-            "local_id": "CH",
-            "name": "Chemie",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 52950899,
-        "value": "14",
-        "given_at": "2025-11-14",
-        "read": false,
-        "collection": {
-          "id": 3234277,
-          "type": "LK",
-          "weighting": 1,
-          "name": "Mündliche Leistung",
-          "given_at": "2025-11-14",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2222,
-          "teacher_id": 3997,
-          "subject": {
-            "id": 2222,
-            "local_id": "SPA",
-            "name": "Spanisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53010048,
-        "value": "14",
-        "given_at": "2025-11-18",
-        "read": false,
-        "collection": {
-          "id": 3266686,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur „Demokratischer Anspruch und Wirklichkeit in der DDR“",
-          "given_at": "2025-11-18",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2209,
-          "teacher_id": 3968,
-          "subject": {
-            "id": 2209,
-            "local_id": "GE",
-            "name": "Geschichte",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53786492,
-        "value": "15",
-        "given_at": "2025-11-21",
-        "read": false,
-        "collection": {
-          "id": 3111204,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur",
-          "given_at": "2025-11-21",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2204,
-          "teacher_id": 3984,
-          "subject": {
-            "id": 2204,
-            "local_id": "ETH",
-            "name": "Ethik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53172474,
-        "value": "13",
-        "given_at": "2025-11-21",
-        "read": false,
-        "collection": {
-          "id": 3193553,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "2. Klausur Literarische Erörterung",
-          "given_at": "2025-11-21",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2202,
-          "teacher_id": 3942,
-          "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53581681,
-        "value": "11",
-        "given_at": "2025-12-02",
-        "read": false,
-        "collection": {
-          "id": 3266676,
-          "type": "Sonstige",
-          "weighting": 1,
-          "name": "Stundenleistung Wende in der DDR",
-          "given_at": "2025-12-02",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2209,
-          "teacher_id": 3968,
-          "subject": {
-            "id": 2209,
-            "local_id": "GE",
-            "name": "Geschichte",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53333525,
-        "value": "15",
-        "given_at": "2025-12-03",
-        "read": false,
-        "collection": {
-          "id": 3294345,
-          "type": "Sonstige",
-          "weighting": 1,
-          "name": "1. Test \"Analytische Geometrie\"",
-          "given_at": "2025-12-03",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2215,
-          "teacher_id": 3913,
-          "subject": {
-            "id": 2215,
-            "local_id": "MA",
-            "name": "Mathematik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53574883,
-        "value": "14",
-        "given_at": "2025-12-04",
-        "read": false,
-        "collection": {
-          "id": 3309267,
-          "type": "Test",
-          "weighting": 1,
-          "name": "Blueskomposition",
-          "given_at": "2025-12-04",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2216,
-          "teacher_id": 3946,
-          "subject": {
-            "id": 2216,
-            "local_id": "MU",
-            "name": "Musik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53502209,
-        "value": "13",
-        "given_at": "2025-12-05",
-        "read": false,
-        "collection": {
-          "id": 3232485,
-          "type": "Sonstige",
-          "weighting": 1,
-          "name": "TÜ",
-          "given_at": "2025-12-05",
-          "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2201,
-          "teacher_id": 7819,
-          "subject": {
-            "id": 2201,
-            "local_id": "CH",
-            "name": "Chemie",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 53438873,
-        "value": "13",
-        "given_at": "2025-12-08",
-        "read": false,
-        "collection": {
-          "id": 3300743,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Comment UK",
-          "given_at": "2025-12-08",
-          "visible_from": null,
-          "interval_id": 6588,
+          "interval_id": 4627,
           "subject_id": 2203,
           "teacher_id": 3922,
           "subject": {
@@ -771,24 +1496,24 @@
         "read_by_type": null
       },
       {
-        "id": 53576113,
-        "value": "11",
-        "given_at": "2025-12-10",
+        "id": 44757414,
+        "value": "14",
+        "given_at": "2025-05-09",
         "read": false,
         "collection": {
-          "id": 3309283,
-          "type": "SL",
+          "id": 2764218,
+          "type": "Klausur",
           "weighting": 1,
-          "name": "Elektromagnetischer Schwingkreis",
-          "given_at": "2025-12-10",
+          "name": "Chemische und Säure-Base-Gleichgewichte",
+          "given_at": "2025-05-09",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2218,
-          "teacher_id": 47679,
+          "interval_id": 4627,
+          "subject_id": 2201,
+          "teacher_id": 7819,
           "subject": {
-            "id": 2218,
-            "local_id": "PH",
-            "name": "Physik",
+            "id": 2201,
+            "local_id": "CH",
+            "name": "Chemie",
             "for": "student",
             "tags": []
           }
@@ -796,24 +1521,24 @@
         "read_by_type": null
       },
       {
-        "id": 53618784,
+        "id": 49322531,
         "value": "13",
-        "given_at": "2025-12-11",
+        "given_at": "2025-05-10",
         "read": false,
         "collection": {
-          "id": 3311953,
-          "type": "mündlich",
+          "id": 2759792,
+          "type": "Komplexes_Anwenden",
           "weighting": 1,
-          "name": "Semesternote",
-          "given_at": "2025-12-11",
+          "name": "\"My own run\"",
+          "given_at": "2025-06-13",
           "visible_from": null,
-          "interval_id": 6588,
-          "subject_id": 2202,
-          "teacher_id": 3969,
+          "interval_id": 4627,
+          "subject_id": 2223,
+          "teacher_id": 3933,
           "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
             "for": "student",
             "tags": []
           }
@@ -821,418 +1546,18 @@
         "read_by_type": null
       },
       {
-        "id": 60383220,
+        "id": 47688573,
         "value": "12",
-        "given_at": "2026-01-20",
+        "given_at": "2025-05-10",
         "read": false,
         "collection": {
-          "id": 3696785,
-          "type": "KL",
-          "weighting": 1,
-          "name": "Klausur 12/II: Soziale Marktwirtschaft",
-          "given_at": "2026-01-20",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2208,
-          "teacher_id": 3925,
-          "subject": {
-            "id": 2208,
-            "local_id": "G/R/W",
-            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 58506143,
-        "value": "14",
-        "given_at": "2026-01-21",
-        "read": false,
-        "collection": {
-          "id": 3484639,
-          "type": "Sonstige",
-          "weighting": 1,
-          "name": "1. Test \"Beurteilende Statistik\"",
-          "given_at": "2026-01-21",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2215,
-          "teacher_id": 3913,
-          "subject": {
-            "id": 2215,
-            "local_id": "MA",
-            "name": "Mathematik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60169956,
-        "value": "13",
-        "given_at": "2026-01-26",
-        "read": false,
-        "collection": {
-          "id": 3346463,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur unter abiturähnlichen Bedingungen_Interpretation oder Sachtexterörterung",
-          "given_at": "2026-01-26",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2202,
-          "teacher_id": 3942,
-          "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60186918,
-        "value": "15",
-        "given_at": "2026-01-27",
-        "read": false,
-        "collection": {
-          "id": 3467351,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Energie bei chemischen Reaktionen, Komplexverbindungen",
-          "given_at": "2026-01-27",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2201,
-          "teacher_id": 7819,
-          "subject": {
-            "id": 2201,
-            "local_id": "CH",
-            "name": "Chemie",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60450782,
-        "value": "7",
-        "given_at": "2026-01-29",
-        "read": false,
-        "collection": {
-          "id": 3703095,
-          "type": "kl",
-          "weighting": 1,
-          "name": "Klausur Wellen",
-          "given_at": "2026-01-29",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2218,
-          "teacher_id": 47679,
-          "subject": {
-            "id": 2218,
-            "local_id": "PH",
-            "name": "Physik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60307293,
-        "value": "10",
-        "given_at": "2026-02-03",
-        "read": false,
-        "collection": {
-          "id": 3690435,
-          "type": "sonstige",
-          "weighting": 1,
-          "name": "Rahmenbedingungen und Folgen internationaler Friedensverträge im 20. Jahrhundert",
-          "given_at": "2026-02-03",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2209,
-          "teacher_id": 3968,
-          "subject": {
-            "id": 2209,
-            "local_id": "GE",
-            "name": "Geschichte",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60242784,
-        "value": "15",
-        "given_at": "2026-02-04",
-        "read": false,
-        "collection": {
-          "id": 3684197,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "A-Klausur",
-          "given_at": "2026-02-04",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2203,
-          "teacher_id": 3922,
-          "subject": {
-            "id": 2203,
-            "local_id": "EN",
-            "name": "Englisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61320248,
-        "value": "15",
-        "given_at": "2026-02-06",
-        "read": false,
-        "collection": {
-          "id": 3684198,
-          "type": "LK",
-          "weighting": 1,
-          "name": "sprachpraktische Prüfung",
-          "given_at": "2026-02-06",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2203,
-          "teacher_id": 3922,
-          "subject": {
-            "id": 2203,
-            "local_id": "EN",
-            "name": "Englisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60425457,
-        "value": "15",
-        "given_at": "2026-02-24",
-        "read": false,
-        "collection": {
-          "id": 3700753,
-          "type": "KL",
-          "weighting": 1,
-          "name": "A-Klausur",
-          "given_at": "2026-02-24",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2215,
-          "teacher_id": 3913,
-          "subject": {
-            "id": 2215,
-            "local_id": "MA",
-            "name": "Mathematik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61026081,
-        "value": "14",
-        "given_at": "2026-02-27",
-        "read": false,
-        "collection": {
-          "id": 3701032,
-          "type": "LK",
-          "weighting": 1,
-          "name": "Hispanoamérica schriftliche Kontrolle",
-          "given_at": "2026-02-27",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2222,
-          "teacher_id": 3997,
-          "subject": {
-            "id": 2222,
-            "local_id": "SPA",
-            "name": "Spanisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60442813,
-        "value": "14",
-        "given_at": "2026-03-02",
-        "read": false,
-        "collection": {
-          "id": 3702434,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur \"DBS + Kryptologie\"",
-          "given_at": "2026-03-02",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2211,
-          "teacher_id": 17598,
-          "subject": {
-            "id": 2211,
-            "local_id": "INF",
-            "name": "Informatik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61311676,
-        "value": "15",
-        "given_at": "2026-03-05",
-        "read": false,
-        "collection": {
-          "id": 3703104,
-          "type": "sl",
-          "weighting": 1,
-          "name": "Präsentation Quanten",
-          "given_at": "2026-03-05",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2218,
-          "teacher_id": 47679,
-          "subject": {
-            "id": 2218,
-            "local_id": "PH",
-            "name": "Physik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61330489,
-        "value": "13",
-        "given_at": "2026-03-06",
-        "read": false,
-        "collection": {
-          "id": 3708031,
-          "type": "KomplexesAnwenden",
-          "weighting": 1,
-          "name": "Planung einer Stunde",
-          "given_at": "2026-03-06",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61148020,
-        "value": "14",
-        "given_at": "2026-03-06",
-        "read": false,
-        "collection": {
-          "id": 3701033,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Klausur 12/II: Hispanoamérica hoy",
-          "given_at": "2026-03-06",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2222,
-          "teacher_id": 3997,
-          "subject": {
-            "id": 2222,
-            "local_id": "SPA",
-            "name": "Spanisch",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60533672,
-        "value": "14",
-        "given_at": "2026-03-08",
-        "read": false,
-        "collection": {
-          "id": 3709698,
-          "type": "schriftlich",
-          "weighting": 1,
-          "name": "Test Gerechtigkeitstheorien",
-          "given_at": "2026-03-08",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2204,
-          "teacher_id": 3984,
-          "subject": {
-            "id": 2204,
-            "local_id": "ETH",
-            "name": "Ethik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 60777649,
-        "value": "15",
-        "given_at": "2026-03-10",
-        "read": false,
-        "collection": {
-          "id": 3691296,
-          "type": "Klausur",
-          "weighting": 1,
-          "name": "Krieg und Frieden im 20. Jahrhundert",
-          "given_at": "2026-03-10",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2209,
-          "teacher_id": 3968,
-          "subject": {
-            "id": 2209,
-            "local_id": "GE",
-            "name": "Geschichte",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61148171,
-        "value": "10",
-        "given_at": "2026-03-13",
-        "read": false,
-        "collection": {
-          "id": 3748136,
+          "id": 2759788,
           "type": "Wissen",
           "weighting": 1,
           "name": "Test",
-          "given_at": "2026-03-13",
+          "given_at": "2025-05-10",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
           "subject_id": 2223,
           "teacher_id": 3933,
           "subject": {
@@ -1246,24 +1571,24 @@
         "read_by_type": null
       },
       {
-        "id": 61151047,
-        "value": "14",
-        "given_at": "2026-03-13",
+        "id": 44509364,
+        "value": "11",
+        "given_at": "2025-05-12",
         "read": false,
         "collection": {
-          "id": 3722065,
-          "type": "kreativ-reflexiv",
+          "id": 2763184,
+          "type": "LK",
           "weighting": 1,
-          "name": "Erpenbeck_Reflexion",
-          "given_at": "2026-03-13",
+          "name": "LK",
+          "given_at": "2025-05-12",
           "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2202,
-          "teacher_id": 3942,
+          "interval_id": 4627,
+          "subject_id": 2218,
+          "teacher_id": 4007,
           "subject": {
-            "id": 2202,
-            "local_id": "DE",
-            "name": "Deutsch",
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
             "for": "student",
             "tags": []
           }
@@ -1271,18 +1596,18 @@
         "read_by_type": null
       },
       {
-        "id": 61482500,
-        "value": "14",
-        "given_at": "2026-03-16",
+        "id": 46302379,
+        "value": "9",
+        "given_at": "2025-05-13",
         "read": false,
         "collection": {
-          "id": 3709702,
+          "id": 2875688,
           "type": "Klausur",
           "weighting": 1,
           "name": "Klausur",
-          "given_at": "2026-03-16",
+          "given_at": "2025-05-13",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
           "subject_id": 2204,
           "teacher_id": 3984,
           "subject": {
@@ -1296,18 +1621,18 @@
         "read_by_type": null
       },
       {
-        "id": 60877745,
+        "id": 44685982,
         "value": "15",
-        "given_at": "2026-03-16",
+        "given_at": "2025-05-15",
         "read": false,
         "collection": {
-          "id": 3702437,
-          "type": "LK",
-          "weighting": 1,
-          "name": "Workshop Krypto Runde 1",
-          "given_at": "2026-03-16",
+          "id": 2776498,
+          "type": "Klausur",
+          "weighting": 2,
+          "name": "2. Klausur \"Algorithmen & Unterprogramme\"",
+          "given_at": "2025-05-15",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
           "subject_id": 2211,
           "teacher_id": 17598,
           "subject": {
@@ -1321,18 +1646,68 @@
         "read_by_type": null
       },
       {
-        "id": 60909313,
-        "value": "12",
-        "given_at": "2026-03-17",
+        "id": 44684029,
+        "value": "14",
+        "given_at": "2025-05-15",
         "read": false,
         "collection": {
-          "id": 3736615,
+          "id": 2759789,
+          "type": "Basistest",
+          "weighting": 1,
+          "name": "I (Übersteiger)",
+          "given_at": "2025-05-15",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2223,
+          "teacher_id": 3933,
+          "subject": {
+            "id": 2223,
+            "local_id": "SPO",
+            "name": "Sport",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 47170254,
+        "value": "12",
+        "given_at": "2025-05-23",
+        "read": false,
+        "collection": {
+          "id": 2852658,
+          "type": "Test",
+          "weighting": 1,
+          "name": "2. Test: Christa Wolfs Blick auf Medea",
+          "given_at": "2025-05-23",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 48988399,
+        "value": "13",
+        "given_at": "2025-05-23",
+        "read": false,
+        "collection": {
+          "id": 2764221,
           "type": "LK",
           "weighting": 1,
-          "name": "Satz von Hess",
-          "given_at": "2026-03-17",
+          "name": "TÜ",
+          "given_at": "2025-05-23",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
           "subject_id": 2201,
           "teacher_id": 7819,
           "subject": {
@@ -1346,24 +1721,24 @@
         "read_by_type": null
       },
       {
-        "id": 60961655,
-        "value": "12",
-        "given_at": "2026-03-17",
+        "id": 46335390,
+        "value": "13",
+        "given_at": "2025-05-27",
         "read": false,
         "collection": {
-          "id": 3741621,
-          "type": "LK",
+          "id": 2875743,
+          "type": "mündlich-praktisch",
           "weighting": 1,
-          "name": "Test BKR",
-          "given_at": "2026-03-17",
+          "name": "Peter Singer Anwendung",
+          "given_at": "2025-05-27",
           "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2208,
-          "teacher_id": 3925,
+          "interval_id": 4627,
+          "subject_id": 2204,
+          "teacher_id": 3984,
           "subject": {
-            "id": 2208,
-            "local_id": "G/R/W",
-            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "id": 2204,
+            "local_id": "ETH",
+            "name": "Ethik",
             "for": "student",
             "tags": []
           }
@@ -1371,24 +1746,24 @@
         "read_by_type": null
       },
       {
-        "id": 61303878,
-        "value": "15",
-        "given_at": "2026-03-19",
+        "id": 49321166,
+        "value": "13",
+        "given_at": "2025-05-28",
         "read": false,
         "collection": {
-          "id": 3748345,
-          "type": "Sonstige",
+          "id": 3027417,
+          "type": "Klausur",
           "weighting": 1,
-          "name": "Künstlerische Präsentation Minimal Music",
-          "given_at": "2026-03-19",
+          "name": "Klausur",
+          "given_at": "2025-05-28",
           "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2216,
-          "teacher_id": 3946,
+          "interval_id": 4627,
+          "subject_id": 2218,
+          "teacher_id": 4007,
           "subject": {
-            "id": 2216,
-            "local_id": "MU",
-            "name": "Musik",
+            "id": 2218,
+            "local_id": "PH",
+            "name": "Physik",
             "for": "student",
             "tags": []
           }
@@ -1396,18 +1771,43 @@
         "read_by_type": null
       },
       {
-        "id": 61320122,
+        "id": 49356699,
         "value": "14",
-        "given_at": "2026-03-20",
+        "given_at": "2025-06-02",
         "read": false,
         "collection": {
-          "id": 3684205,
-          "type": "LK",
+          "id": 2749372,
+          "type": "Klausur",
+          "weighting": 1,
+          "name": "Klausur: Ursachen des Scheiterns der Weimarer Republik, Machtaufbau und Gründe für die Akzeptanz im NS",
+          "given_at": "2025-06-02",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2209,
+          "teacher_id": 3968,
+          "subject": {
+            "id": 2209,
+            "local_id": "GE",
+            "name": "Geschichte",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 45994977,
+        "value": "14",
+        "given_at": "2025-06-02",
+        "read": false,
+        "collection": {
+          "id": 2858332,
+          "type": "Klausur",
           "weighting": 1,
           "name": "Mediation",
-          "given_at": "2026-03-20",
+          "given_at": "2025-06-02",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
           "subject_id": 2203,
           "teacher_id": 3922,
           "subject": {
@@ -1421,124 +1821,174 @@
         "read_by_type": null
       },
       {
-        "id": 61355836,
-        "value": "10",
-        "given_at": "2026-03-21",
-        "read": false,
-        "collection": {
-          "id": 3748135,
-          "type": "Schnelligkeit",
-          "weighting": 1,
-          "name": "Flankensprünge oder Schlängellauf",
-          "given_at": "2026-03-21",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61353789,
-        "value": "0",
-        "given_at": "2026-03-21",
-        "read": false,
-        "collection": {
-          "id": 3748133,
-          "type": "Ausdauer",
-          "weighting": 1,
-          "name": "Levellauf",
-          "given_at": "2026-03-21",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61052745,
+        "id": 47744357,
         "value": "14",
-        "given_at": "2026-03-21",
+        "given_at": "2025-06-03",
         "read": false,
         "collection": {
-          "id": 3748331,
+          "id": 2882425,
+          "type": "mündlich",
+          "weighting": 1,
+          "name": "Fachlich fundierte und kontinuierliche Mitarbeit im Semester",
+          "given_at": "2025-06-03",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 46941386,
+        "value": "14",
+        "given_at": "2025-06-03",
+        "read": false,
+        "collection": {
+          "id": 2767755,
+          "type": "Sonstige",
+          "weighting": 1,
+          "name": "1. Test \"Wahrscheinlichkeitsrechnung\"",
+          "given_at": "2025-06-03",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2215,
+          "teacher_id": 3913,
+          "subject": {
+            "id": 2215,
+            "local_id": "MA",
+            "name": "Mathematik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 47888893,
+        "value": "10",
+        "given_at": "2025-06-03",
+        "read": false,
+        "collection": {
+          "id": 2765614,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Instagram-Post zu sozialen Ungleichheiten",
+          "given_at": "2025-06-03",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2208,
+          "teacher_id": 3925,
+          "subject": {
+            "id": 2208,
+            "local_id": "G/R/W",
+            "name": "Gemeinschaftskunde/Rechtserziehung/Wirtschaft",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 46885569,
+        "value": "14",
+        "given_at": "2025-06-05",
+        "read": false,
+        "collection": {
+          "id": 2907302,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Workshop Sortieralgorithmen Teil 1",
+          "given_at": "2025-06-05",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2211,
+          "teacher_id": 17598,
+          "subject": {
+            "id": 2211,
+            "local_id": "INF",
+            "name": "Informatik",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 47699524,
+        "value": "14",
+        "given_at": "2025-06-06",
+        "read": false,
+        "collection": {
+          "id": 2852667,
           "type": "Klausur",
           "weighting": 1,
-          "name": "Klausur Musik um 1900",
-          "given_at": "2026-03-12",
+          "name": "2. Klausur: Interpretation epischer Texte",
+          "given_at": "2025-06-06",
           "visible_from": null,
-          "interval_id": 6590,
+          "interval_id": 4627,
+          "subject_id": 2202,
+          "teacher_id": 3942,
+          "subject": {
+            "id": 2202,
+            "local_id": "DE",
+            "name": "Deutsch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 48947610,
+        "value": "15",
+        "given_at": "2025-06-13",
+        "read": false,
+        "collection": {
+          "id": 3009169,
+          "type": "LK",
+          "weighting": 1,
+          "name": "Semesterbewertung",
+          "given_at": "2025-06-13",
+          "visible_from": null,
+          "interval_id": 4627,
+          "subject_id": 2203,
+          "teacher_id": 3922,
+          "subject": {
+            "id": 2203,
+            "local_id": "EN",
+            "name": "Englisch",
+            "for": "student",
+            "tags": []
+          }
+        },
+        "read_by_type": null
+      },
+      {
+        "id": 49000180,
+        "value": "15",
+        "given_at": "2025-06-13",
+        "read": false,
+        "collection": {
+          "id": 3012202,
+          "type": "Test",
+          "weighting": 1,
+          "name": "Künstlerischer Vortrag",
+          "given_at": "2025-06-13",
+          "visible_from": null,
+          "interval_id": 4627,
           "subject_id": 2216,
           "teacher_id": 3946,
           "subject": {
             "id": 2216,
             "local_id": "MU",
             "name": "Musik",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61355130,
-        "value": "10",
-        "given_at": "2026-03-21",
-        "read": false,
-        "collection": {
-          "id": 3748134,
-          "type": "Kraft",
-          "weighting": 1,
-          "name": "Kraft Beine",
-          "given_at": "2026-03-21",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
-            "for": "student",
-            "tags": []
-          }
-        },
-        "read_by_type": null
-      },
-      {
-        "id": 61354375,
-        "value": "9",
-        "given_at": "2026-03-21",
-        "read": false,
-        "collection": {
-          "id": 3748132,
-          "type": "Kraft",
-          "weighting": 1,
-          "name": "Kraft Arme",
-          "given_at": "2026-03-21",
-          "visible_from": null,
-          "interval_id": 6590,
-          "subject_id": 2223,
-          "teacher_id": 3933,
-          "subject": {
-            "id": 2223,
-            "local_id": "SPO",
-            "name": "Sport",
             "for": "student",
             "tags": []
           }
